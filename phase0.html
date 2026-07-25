@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 0 — Current EA Maturity · GWEA 2.0 worked example</title>
+<link rel="stylesheet" href="theme.css">
+<style>
+:root{--acc:#607d8b}
+.dim-card{background:#fff;border:1px solid #e3e8ee;border-radius:10px;padding:18px 20px;margin:14px 0;box-shadow:0 1px 2px rgba(20,40,60,.04)}
+.dim-card h3{margin:0 0 4px;font-size:16px}
+.dim-meta{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.dim-avg{font-size:26px;font-weight:800;line-height:1}
+.dim-band{font-size:12px;font-weight:700;padding:2px 10px;border-radius:12px;color:#fff;white-space:nowrap}
+.bar-wrap{margin:8px 0 14px;position:relative;padding:4px 0}
+.bar-track{height:10px;background:#eef2f6;border-radius:6px;overflow:hidden}
+.bar-fill{height:100%;border-radius:6px}
+.tick-line{position:absolute;top:0;bottom:0;width:2px;background:#48566a;border-radius:1px;left:60%}
+.tick-lbl{position:absolute;top:0;left:calc(60% + 5px);font-size:9.5px;color:#48566a;white-space:nowrap;font-weight:600;line-height:18px}
+.q-row{display:grid;grid-template-columns:32px 1fr 38px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid #f0f3f7}
+.q-row:last-child{border-bottom:none}
+.q-id{font-size:11px;font-weight:700;color:#8894a3}
+.q-text{font-size:13px;line-height:1.35}
+.score-dot{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;color:#fff;flex-shrink:0}
+.radar-wrap{display:flex;justify-content:center;margin:16px 0 4px}
+.finding{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #f0f3f7;font-size:13.5px}
+.finding:last-child{border-bottom:none}
+.finding-icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;margin-top:1px}
+</style>
+</head>
+<body>
+<main>
+<span class="page-tag" style="background:#607d8b">Phase 0 · Current EA Maturity</span>
+<h1>Phase 0 — Current EA Maturity Assessment</h1>
+<p class="lede">Baseline questionnaire scored before the GWEA 2.0 improvement cycle begins — six dimensions, 30 questions, each rated 0 to 5.</p>
+
+<div class="grid4">
+  <div class="kpi"><div class="n" style="color:#C43C2E">1.29</div><div class="l">Overall Maturity /5</div></div>
+  <div class="kpi"><div class="n" style="color:#C43C2E">Initial</div><div class="l">Maturity band</div></div>
+  <div class="kpi"><div class="n" style="color:#C43C2E">4 of 6</div><div class="l">Dimensions at Initial level</div></div>
+  <div class="kpi"><div class="n" style="color:#E6A817">3.00</div><div class="l">Target — Defined / FAIR</div></div>
+</div>
+
+<p>The assessment was conducted through a structured interview using the GWEA 2.0 Departmental Maturity Questionnaire.
+A score of <b>1.29 / 5 (Initial)</b> places the Department of Human Settlements well below the minimum target of
+3.0 (Defined / FAIR). No dimension has yet reached the Defined level; the highest is Service Digitisation at 2.2
+and the weakest is Repository &amp; Artefacts at 0.67. This baseline anchors every subsequent GWEA phase —
+the gap between the current state and the 3.0 target defines exactly what Phases 1–5 must close.</p>
+
+<div class="legend" style="margin:18px 0 4px">
+  <span><i style="background:var(--z-int)"></i><b style="color:var(--z-int)">0–2 Intervene</b></span>
+  <span><i style="background:var(--z-imp)"></i><b style="color:var(--z-imp)">3 Improve</b></span>
+  <span><i style="background:var(--z-good)"></i><b style="color:var(--z-good)">4 Good</b></span>
+  <span><i style="background:var(--z-exc)"></i><b style="color:var(--z-exc)">5 Excellent</b></span>
+  <span style="color:var(--muted)">· Target for each dimension: <b style="color:var(--ink)">3.0</b></span>
+</div>
+
+<h2>Dimension overview</h2>
+
+<div class="radar-wrap">
+<svg viewBox="0 0 520 430" width="100%" style="max-width:500px">
+  <!-- Background rings -->
+  <polygon points="250,174 272.5,187 272.5,213 250,226 227.5,213 227.5,187"
+    fill="none" stroke="#e8ecf0" stroke-width="1"/>
+  <polygon points="250,148 295,174 295,226 250,252 205,226 205,174"
+    fill="none" stroke="#e8ecf0" stroke-width="1"/>
+  <!-- Target ring (3/5) highlighted -->
+  <polygon points="250,122 317.5,161 317.5,239 250,278 182.5,239 182.5,161"
+    fill="rgba(230,168,23,.07)" stroke="#E6A817" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="250,96 340,148 340,252 250,304 160,252 160,148"
+    fill="none" stroke="#e8ecf0" stroke-width="1"/>
+  <!-- Max ring -->
+  <polygon points="250,70 362.6,135 362.6,265 250,330 137.4,265 137.4,135"
+    fill="none" stroke="#dde3ea" stroke-width="1"/>
+
+  <!-- Axis lines -->
+  <line x1="250" y1="200" x2="250" y2="70"       stroke="#dde3ea" stroke-width="1"/>
+  <line x1="250" y1="200" x2="362.6" y2="135"    stroke="#dde3ea" stroke-width="1"/>
+  <line x1="250" y1="200" x2="362.6" y2="265"    stroke="#dde3ea" stroke-width="1"/>
+  <line x1="250" y1="200" x2="250" y2="330"       stroke="#dde3ea" stroke-width="1"/>
+  <line x1="250" y1="200" x2="137.4" y2="265"    stroke="#dde3ea" stroke-width="1"/>
+  <line x1="250" y1="200" x2="137.4" y2="135"    stroke="#dde3ea" stroke-width="1"/>
+
+  <!-- Actual polygon — scores [D1=0.8, D2=1.5, D3=0.667, D4=1.0, D5=1.6, D6=2.2] -->
+  <!-- r = score/5 * 130; max-ring is r=130 -->
+  <!-- D1(250,179) D2(284,181) D3(265,209) D4(250,226) D5(214,221) D6(200,171) -->
+  <polygon points="250,179 284,181 265,209 250,226 214,221 200,171"
+    fill="rgba(196,60,46,.15)" stroke="#C43C2E" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- Score dots -->
+  <circle cx="250" cy="179" r="5" fill="#C43C2E"/>
+  <circle cx="284" cy="181" r="5" fill="#C43C2E"/>
+  <circle cx="265" cy="209" r="5" fill="#C43C2E"/>
+  <circle cx="250" cy="226" r="5" fill="#C43C2E"/>
+  <circle cx="214" cy="221" r="5" fill="#C43C2E"/>
+  <circle cx="200" cy="171" r="5" fill="#C43C2E"/>
+
+  <!-- Score values near dots -->
+  <text x="250" y="167" text-anchor="middle" font-size="10" font-weight="700" fill="#C43C2E">0.8</text>
+  <text x="296" y="174" text-anchor="start"  font-size="10" font-weight="700" fill="#C43C2E">1.5</text>
+  <text x="272" y="224" text-anchor="start"  font-size="10" font-weight="700" fill="#C43C2E">0.7</text>
+  <text x="250" y="244" text-anchor="middle" font-size="10" font-weight="700" fill="#C43C2E">1.0</text>
+  <text x="202" y="238" text-anchor="end"    font-size="10" font-weight="700" fill="#C43C2E">1.6</text>
+  <text x="188" y="163" text-anchor="end"    font-size="10" font-weight="700" fill="#C43C2E">2.2</text>
+
+  <!-- Dimension labels -->
+  <text x="250" y="50"  text-anchor="middle" font-size="11" font-weight="600" fill="#33404f">EA Practice &amp; Capability</text>
+  <text x="250" y="63"  text-anchor="middle" font-size="10" fill="#8894a3">D1</text>
+
+  <text x="374" y="118" text-anchor="start"  font-size="11" font-weight="600" fill="#33404f">Architecture</text>
+  <text x="374" y="131" text-anchor="start"  font-size="11" font-weight="600" fill="#33404f">Engagements</text>
+  <text x="374" y="144" text-anchor="start"  font-size="10" fill="#8894a3">D2</text>
+
+  <text x="374" y="254" text-anchor="start"  font-size="11" font-weight="600" fill="#33404f">Repository</text>
+  <text x="374" y="267" text-anchor="start"  font-size="11" font-weight="600" fill="#33404f">&amp; Artefacts</text>
+  <text x="374" y="280" text-anchor="start"  font-size="10" fill="#8894a3">D3</text>
+
+  <text x="250" y="350" text-anchor="middle" font-size="11" font-weight="600" fill="#33404f">Data Management</text>
+  <text x="250" y="363" text-anchor="middle" font-size="11" font-weight="600" fill="#33404f">&amp; Interoperability</text>
+  <text x="250" y="376" text-anchor="middle" font-size="10" fill="#8894a3">D4</text>
+
+  <text x="126" y="254" text-anchor="end"    font-size="11" font-weight="600" fill="#33404f">Governance &amp;</text>
+  <text x="126" y="267" text-anchor="end"    font-size="11" font-weight="600" fill="#33404f">Strategic Alignment</text>
+  <text x="126" y="280" text-anchor="end"    font-size="10" fill="#8894a3">D5</text>
+
+  <text x="126" y="118" text-anchor="end"    font-size="11" font-weight="600" fill="#33404f">Service</text>
+  <text x="126" y="131" text-anchor="end"    font-size="11" font-weight="600" fill="#33404f">Digitisation</text>
+  <text x="126" y="144" text-anchor="end"    font-size="10" fill="#8894a3">D6</text>
+
+  <!-- Centre overall score -->
+  <text x="250" y="194" text-anchor="middle" font-size="21" font-weight="800" fill="#C43C2E">1.29</text>
+  <text x="250" y="210" text-anchor="middle" font-size="10" fill="#8894a3">Overall /5</text>
+
+  <!-- Legend strip -->
+  <line x1="30" y1="408" x2="56" y2="408" stroke="#E6A817" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="62" y="412" font-size="11" fill="#5a6675">Target 3.0</text>
+  <rect x="156" y="402" width="28" height="12" rx="2" fill="rgba(196,60,46,.2)" stroke="#C43C2E" stroke-width="1.5"/>
+  <text x="190" y="412" font-size="11" fill="#5a6675">Actual score</text>
+</svg>
+</div>
+
+<h2>Scores by dimension</h2>
+<table style="width:auto">
+  <thead>
+    <tr><th>Code</th><th style="min-width:300px">Dimension</th><th style="text-align:center;width:90px">Score /5</th><th style="text-align:center;width:110px">Band</th><th style="text-align:center;width:160px">Gap to a target of 3.0</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>D1</b></td>
+      <td>EA Practice &amp; Capability</td>
+      <td style="text-align:center"><b>0.80</b></td>
+      <td style="text-align:center"><span class="z z-int">Initial</span></td>
+      <td style="text-align:center;color:#C43C2E">−2.20</td>
+    </tr>
+    <tr>
+      <td><b>D2</b></td>
+      <td>Architecture Engagements &amp; Roadmap</td>
+      <td style="text-align:center"><b>1.50</b></td>
+      <td style="text-align:center"><span class="z z-int">Repeatable</span></td>
+      <td style="text-align:center;color:#C43C2E">−1.50</td>
+    </tr>
+    <tr>
+      <td><b>D3</b></td>
+      <td>Repository &amp; Artefacts</td>
+      <td style="text-align:center"><b>0.67</b></td>
+      <td style="text-align:center"><span class="z z-int">Initial</span></td>
+      <td style="text-align:center;color:#C43C2E">−2.33</td>
+    </tr>
+    <tr>
+      <td><b>D4</b></td>
+      <td>Data Management &amp; Interoperability</td>
+      <td style="text-align:center"><b>1.00</b></td>
+      <td style="text-align:center"><span class="z z-int">Initial</span></td>
+      <td style="text-align:center;color:#C43C2E">−2.00</td>
+    </tr>
+    <tr>
+      <td><b>D5</b></td>
+      <td>Governance &amp; Strategic Alignment</td>
+      <td style="text-align:center"><b>1.60</b></td>
+      <td style="text-align:center"><span class="z z-int">Repeatable</span></td>
+      <td style="text-align:center;color:#C43C2E">−1.40</td>
+    </tr>
+    <tr>
+      <td><b>D6</b></td>
+      <td>Service Digitisation</td>
+      <td style="text-align:center"><b>2.20</b></td>
+      <td style="text-align:center"><span class="z z-int">Repeatable</span></td>
+      <td style="text-align:center;color:#C43C2E">−0.80</td>
+    </tr>
+    <tr style="background:#fafbfc;font-weight:700">
+      <td colspan="2">Overall maturity (weighted average)</td>
+      <td style="text-align:center">1.29</td>
+      <td style="text-align:center"><span class="z z-int">Initial</span></td>
+      <td style="text-align:center;color:#C43C2E">−1.71</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Key findings from the baseline</h2>
+<div class="card" style="padding:14px 18px">
+
+  <div class="finding">
+    <div class="finding-icon" style="background:#C43C2E">!</div>
+    <div><b>No EA function and no in-house skills (D1 — 0.80).</b>
+    Questions 1.1 and 1.5 both scored 0: there is no designated enterprise architect and no TOGAF/ArchiMate competency on staff.
+    Architecture work is occasional and ad-hoc. This is the single biggest blocker — without a capability, GWEA cannot be sustained.</div>
+  </div>
+
+  <div class="finding">
+    <div class="finding-icon" style="background:#C43C2E">!</div>
+    <div><b>An EA exercise has been done but produced no roadmap (D2 — 1.50).</b>
+    The department has conducted an exercise and it is reasonably current (2.2=3), but no implementation roadmap was produced (2.3=0)
+    and no tracked delivery followed (2.4=1). The assessment work has not converted into action.</div>
+  </div>
+
+  <div class="finding">
+    <div class="finding-icon" style="background:#C43C2E">!</div>
+    <div><b>Repository practically empty (D3 — 0.67).</b>
+    A repository location exists and is referenced occasionally (3.1=1, 3.2=1), but it holds no models (3.3=0),
+    no structured data (3.4=0), and no functional descriptions (3.6=0). Technical diagrams exist for some systems (3.5=2)
+    but are unconnected to any governed store.</div>
+  </div>
+
+  <div class="finding">
+    <div class="finding-icon" style="background:#E07B1E">~</div>
+    <div><b>Data exchange still largely manual (D4 — 1.00).</b>
+    A data-management function is defined (4.1=3), a positive foundation. But external exchange is still email/SFTP-heavy
+    (4.3=0), internal systems are not integrated (4.4=1), and internal manual exchange persists (4.5=0).
+    Interoperability via secured APIs is minimal (4.2=1).</div>
+  </div>
+
+  <div class="finding">
+    <div class="finding-icon" style="background:#E07B1E">~</div>
+    <div><b>Governance structure exists but is not enforced (D5 — 1.60).</b>
+    The architecture board scores 4 — it exists and meets regularly (5.1=4). However, GWEA compliance checks are weak (5.2=2),
+    the board is not linked to motivation models (5.3=1), MIOS/OMF standards are not applied (5.4=0),
+    and investment decisions bypass architecture review in practice (5.5=1).</div>
+  </div>
+
+  <div class="finding">
+    <div class="finding-icon" style="background:#E07B1E">+</div>
+    <div><b>Citizen-facing digitisation is the strongest signal (D6 — 2.20).</b>
+    Priority external services are available digitally (6.2=3) and around half are automated (6.3=3).
+    This provides a platform to build on. The gap is a lack of service strategy (6.5=1) and weak internal service coverage (6.1=2).</div>
+  </div>
+
+</div>
+
+<h2>Question-by-question detail</h2>
+<div class="small" style="display:flex;align-items:center;flex-wrap:nowrap;gap:6px;margin:6px 0 12px">
+  <span>Score colour:</span>
+  <span class="z z-int" style="font-size:11px;white-space:nowrap">0–2 Intervene</span>
+  <span class="z z-imp" style="font-size:11px;white-space:nowrap">&gt;2–3 Improve</span>
+  <span class="z z-good" style="font-size:11px;white-space:nowrap">&gt;3–4 Good</span>
+  <span class="z z-exc" style="font-size:11px;white-space:nowrap">&gt;4–5 Excellent</span>
+  <span style="white-space:nowrap">· Target for each dimension: <b>3.0</b></span>
+</div>
+
+<!-- ── D1 ─────────────────────────────────────────────── -->
+<div class="dim-card">
+  <h3>D1 — EA Practice &amp; Capability</h3>
+  <div class="dim-meta">
+    <div class="dim-avg" style="color:#C43C2E">0.80</div>
+    <span class="dim-band" style="background:#C43C2E">Initial</span>
+    <span class="small">5 questions · average of 5 scores</span>
+  </div>
+  <div class="bar-wrap">
+    <div class="bar-track"><div class="bar-fill" style="width:16%;background:#C43C2E"></div></div>
+    <div class="tick-line"></div><div class="tick-lbl">3.0 target</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">1.1</div>
+    <div class="q-text">A dedicated enterprise architect or EA capability exists in the organisation.</div>
+    <div class="score-dot" style="background:#C43C2E">0</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">1.2</div>
+    <div class="q-text">A documented EA process aligned to the TOGAF ADM is in place.</div>
+    <div class="score-dot" style="background:#C43C2E">1</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">1.3</div>
+    <div class="q-text">The EA process is actively used to guide change, not just documented.</div>
+    <div class="score-dot" style="background:#C43C2E">2</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">1.4</div>
+    <div class="q-text">New technology solutions are motivated through architecture rather than ad-hoc directive.</div>
+    <div class="score-dot" style="background:#C43C2E">1</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">1.5</div>
+    <div class="q-text">EA competency and method knowledge (TOGAF / ArchiMate) is sustained in-house.</div>
+    <div class="score-dot" style="background:#C43C2E">0</div>
+  </div>
+</div>
+
+<!-- ── D2 ─────────────────────────────────────────────── -->
+<div class="dim-card">
+  <h3>D2 — Architecture Engagements &amp; Roadmap</h3>
+  <div class="dim-meta">
+    <div class="dim-avg" style="color:#C43C2E">1.50</div>
+    <span class="dim-band" style="background:#C43C2E">Repeatable</span>
+    <span class="small">4 questions · average of 4 scores</span>
+  </div>
+  <div class="bar-wrap">
+    <div class="bar-track"><div class="bar-fill" style="width:30%;background:#C43C2E"></div></div>
+    <div class="tick-line"></div><div class="tick-lbl">3.0 target</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">2.1</div>
+    <div class="q-text">An EA exercise (by SITA, a private firm, or in-house) has been conducted.</div>
+    <div class="score-dot" style="background:#C43C2E">2</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">2.2</div>
+    <div class="q-text">The most recent EA exercise is current.</div>
+    <div class="score-dot" style="background:#E07B1E">3</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">2.3</div>
+    <div class="q-text">An implementation roadmap was produced from the architecture.</div>
+    <div class="score-dot" style="background:#C43C2E">0</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">2.4</div>
+    <div class="q-text">The implementation roadmap is being executed and tracked.</div>
+    <div class="score-dot" style="background:#C43C2E">1</div>
+  </div>
+</div>
+
+<!-- ── D3 ─────────────────────────────────────────────── -->
+<div class="dim-card">
+  <h3>D3 — Repository &amp; Artefacts</h3>
+  <div class="dim-meta">
+    <div class="dim-avg" style="color:#C43C2E">0.67</div>
+    <span class="dim-band" style="background:#C43C2E">Initial</span>
+    <span class="small">6 questions · average of 6 scores</span>
+  </div>
+  <div class="bar-wrap">
+    <div class="bar-track"><div class="bar-fill" style="width:13.3%;background:#C43C2E"></div></div>
+    <div class="tick-line"></div><div class="tick-lbl">3.0 target</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">3.1</div>
+    <div class="q-text">An architecture repository is in place.</div>
+    <div class="score-dot" style="background:#C43C2E">1</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">3.2</div>
+    <div class="q-text">The repository is kept current and used regularly.</div>
+    <div class="score-dot" style="background:#C43C2E">1</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">3.3</div>
+    <div class="q-text">The repository holds architecture diagrams / models.</div>
+    <div class="score-dot" style="background:#C43C2E">0</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">3.4</div>
+    <div class="q-text">The repository holds structured data that can generate architecture reports.</div>
+    <div class="score-dot" style="background:#C43C2E">0</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">3.5</div>
+    <div class="q-text">Technical diagrams of information-system solutions exist.</div>
+    <div class="score-dot" style="background:#C43C2E">2</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">3.6</div>
+    <div class="q-text">Functional descriptions of information-system solutions exist.</div>
+    <div class="score-dot" style="background:#C43C2E">0</div>
+  </div>
+</div>
+
+<!-- ── D4 ─────────────────────────────────────────────── -->
+<div class="dim-card">
+  <h3>D4 — Data Management &amp; Interoperability</h3>
+  <div class="dim-meta">
+    <div class="dim-avg" style="color:#C43C2E">1.00</div>
+    <span class="dim-band" style="background:#C43C2E">Initial</span>
+    <span class="small">5 questions · average of 5 scores</span>
+  </div>
+  <div class="bar-wrap">
+    <div class="bar-track"><div class="bar-fill" style="width:20%;background:#C43C2E"></div></div>
+    <div class="tick-line"></div><div class="tick-lbl">3.0 target</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">4.1</div>
+    <div class="q-text">A data-management function is in place.</div>
+    <div class="score-dot" style="background:#E07B1E">3</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">4.2</div>
+    <div class="q-text">Data is shared securely with external parties via APIs.</div>
+    <div class="score-dot" style="background:#C43C2E">1</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">4.3</div>
+    <div class="q-text">Data exchange with external parties has moved away from manual methods (email, SFTP, flash drive).</div>
+    <div class="score-dot" style="background:#C43C2E">0</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">4.4</div>
+    <div class="q-text">In-house applications integrate via APIs or an ESB.</div>
+    <div class="score-dot" style="background:#C43C2E">1</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">4.5</div>
+    <div class="q-text">Internal data exchange has moved away from manual methods (shared folders, email, flash drive).</div>
+    <div class="score-dot" style="background:#C43C2E">0</div>
+  </div>
+</div>
+
+<!-- ── D5 ─────────────────────────────────────────────── -->
+<div class="dim-card">
+  <h3>D5 — Governance &amp; Strategic Alignment</h3>
+  <div class="dim-meta">
+    <div class="dim-avg" style="color:#C43C2E">1.60</div>
+    <span class="dim-band" style="background:#C43C2E">Repeatable</span>
+    <span class="small">5 questions · average of 5 scores</span>
+  </div>
+  <div class="bar-wrap">
+    <div class="bar-track"><div class="bar-fill" style="width:32%;background:#C43C2E"></div></div>
+    <div class="tick-line"></div><div class="tick-lbl">3.0 target</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">5.1</div>
+    <div class="q-text">An architecture board governs digital transformation in the organisation.</div>
+    <div class="score-dot" style="background:#E6A817">4</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">5.2</div>
+    <div class="q-text">Governance mechanisms ensure compliance with GWEA principles.</div>
+    <div class="score-dot" style="background:#C43C2E">2</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">5.3</div>
+    <div class="q-text">Architecture is linked to the ArchiMate motivation layer (drivers, outcomes, value).</div>
+    <div class="score-dot" style="background:#C43C2E">1</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">5.4</div>
+    <div class="q-text">Architecture aligns to national interoperability standards (MIOS / OMF).</div>
+    <div class="score-dot" style="background:#C43C2E">0</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">5.5</div>
+    <div class="q-text">Investment and change decisions are governed through architecture (ARB / strategic alignment).</div>
+    <div class="score-dot" style="background:#C43C2E">1</div>
+  </div>
+</div>
+
+<!-- ── D6 ─────────────────────────────────────────────── -->
+<div class="dim-card">
+  <h3>D6 — Service Digitisation</h3>
+  <div class="dim-meta">
+    <div class="dim-avg" style="color:#C43C2E">2.20</div>
+    <span class="dim-band" style="background:#C43C2E">Repeatable</span>
+    <span class="small">5 questions · average of 5 scores</span>
+  </div>
+  <div class="bar-wrap">
+    <div class="bar-track"><div class="bar-fill" style="width:44%;background:#C43C2E"></div></div>
+    <div class="tick-line"></div><div class="tick-lbl">3.0 target</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">6.1</div>
+    <div class="q-text">Internal users are served by fit-for-purpose applications.</div>
+    <div class="score-dot" style="background:#C43C2E">2</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">6.2</div>
+    <div class="q-text">Citizens / businesses are served by digital applications.</div>
+    <div class="score-dot" style="background:#E07B1E">3</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">6.3</div>
+    <div class="q-text">Client-facing (external) services are automated.</div>
+    <div class="score-dot" style="background:#E07B1E">3</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">6.4</div>
+    <div class="q-text">Internal services are automated.</div>
+    <div class="score-dot" style="background:#C43C2E">2</div>
+  </div>
+  <div class="q-row">
+    <div class="q-id">6.5</div>
+    <div class="q-text">A digital service / channel strategy guides service automation.</div>
+    <div class="score-dot" style="background:#C43C2E">1</div>
+  </div>
+</div>
+
+<h2>What this means for the GWEA cycle</h2>
+<p>This baseline establishes the starting point for the full GWEA 2.0 improvement programme. The department's
+1.29 overall score must reach 3.0 — a gap of 1.71 points — to be classified as Defined / FAIR. Phases 1–5
+are sequenced to close that gap systematically: Phase 1 (Cataloguing) addresses D3 by populating the repository;
+Phase 2 (Assessment) deepens D1 and D2 by applying the method in-house; Phase 3 (Roadmap) converts findings into
+a tracked execution plan (closing D2's 2.3 gap); Phase 4 (Remedial projects) targets D4 integration and D5 alignment;
+Phase 5 (Governance) institutionalises the board's authority to enforce the scores that currently sit at zero.</p>
+
+<div class="note"><b>Maturity scoring scale.</b>
+0 = Non-existent · 1 = Initial (ad-hoc) · 2 = Repeatable (inconsistent) · <b>3 = Defined — FAIR (target)</b> · 4 = Managed (good) · 5 = Optimised (excellent).
+These are the questionnaire's own level names, and they sit on the same 0–5 scale used everywhere else on this
+site. They map to the site-wide zones as follows: 0–2 (Non-existent, Initial, Repeatable) = <b>Intervene</b> ·
+&gt;2–3 (Defined / FAIR) = <b>Improve</b> · &gt;3–4 (Managed) = <b>Good</b> · &gt;4–5 (Optimised) =
+<b>Excellent</b>.
+Each dimension score is the arithmetic mean of its questions. The overall maturity score is the equally-weighted
+average of the six dimension scores. Scores are illustrative training data from the GWEA 2.0 Departmental Maturity
+Questionnaire applied to a worked example for the Department of Human Settlements.</div>
+
+<div class="foot">GWEA 2.0 worked example — Department of Human Settlements (Vote 33) · Cycle C2 · 2026/27 baseline.
+Figures are illustrative training data, not an official departmental assessment.</div>
+</main>
+<script src="navbar.js"></script>
+</body></html>

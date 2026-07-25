@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en-ZA"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capability Risk Register · GWEA 2.0</title>
+<link rel="stylesheet" href="theme.css">
+<style>
+main{max-width:1080px;}
+.ctx{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 2px;}
+.ctx span{font-size:11px;background:#F1F7F5;border:1px solid #D6E7E1;color:#3C5A51;padding:3px 9px;border-radius:3px;}
+.howto{margin-top:11px;background:#FFF8E8;border:1px solid #EBD9AE;border-left:3px solid #E08A1E;border-radius:6px;padding:9px 12px;font-size:12px;color:#5C4A21;line-height:1.5;}
+.howto b{color:#7A5C1E;}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:20px 0 26px;}
+.kpi{background:#fff;border:1px solid #DCE3E0;border-left:4px solid #1D9E75;border-radius:5px;padding:13px 15px;box-shadow:none;}
+.kpi .n{font-size:24px;font-weight:700;color:#085041;line-height:1.05;}
+.kpi .l{font-size:11px;color:#5b6b66;margin-top:5px;line-height:1.35;}
+.kpi.bad{border-left-color:#C0392B;} .kpi.bad .n{color:#C0392B;}
+.kpi.warn{border-left-color:#E08A1E;} .kpi.warn .n{color:#8A5A12;}
+.kpi.good{border-left-color:#1D9E75;}
+h2.sh{font-size:15px;color:#085041;margin:26px 0 4px;border:none;padding:0;}
+p.sub{font-size:12.5px;color:#5b6b66;margin:0 0 14px;line-height:1.55;max-width:900px;}
+p.body{font-size:13px;color:#3d4a46;line-height:1.65;max-width:900px;margin:0 0 12px;}
+p.body b{color:#0F6E56;}
+.note{margin-top:18px;background:#F1F7F5;border:1px solid #D6E7E1;border-left:3px solid #0F6E56;border-radius:8px;padding:12px 14px;font-size:12.5px;color:#2f463f;line-height:1.6;max-width:940px;}
+.note b{color:#0F6E56;}
+.note.warn{background:#FFF8E8;border-color:#EBD9AE;border-left-color:#E08A1E;color:#5C4A21;}
+.note.warn b{color:#7A5C1E;}
+.note.bad{background:#FCEEEC;border-color:#E7C4BE;border-left-color:#C0392B;color:#6E2B22;}
+.note.bad b{color:#9E2E22;}
+table.tbl{width:100%;border-collapse:collapse;font-size:12px;margin:6px 0 8px;background:#fff;border:1px solid #DCE3E0;}
+table.tbl th{background:#F1F7F5;text-align:left;padding:8px 10px;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;color:#3C5A51;border-bottom:1px solid #DCE3E0;}
+table.tbl td{padding:7px 10px;border-bottom:1px solid #EBEFED;vertical-align:top;line-height:1.45;}
+table.tbl tr:last-child td{border-bottom:none;}
+table.tbl tr:hover td{background:#FAFCFB;}
+table.tbl td.num{text-align:right;}
+.z{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;color:#fff;white-space:nowrap;}
+.z.int{background:#C0392B;} .z.imp{background:#E08A1E;} .z.sus{background:#1D9E75;} .z.con{background:#2E6DA4;}
+.bar{background:#EBEFED;border-radius:5px;height:15px;position:relative;overflow:hidden;min-width:80px;}
+.bar>span{display:block;height:100%;border-radius:5px;}
+.barwrap{display:flex;align-items:center;gap:8px;}
+.barwrap .bt{font-size:11px;color:#41504b;min-width:34px;}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:820px){.cols{grid-template-columns:1fr;}}
+.card{background:#fff;border:1px solid #DCE3E0;border-radius:6px;padding:15px 17px;box-shadow:none;}
+.card h3{margin:0 0 7px;font-size:13.5px;color:#085041;}
+.card p{font-size:12px;line-height:1.6;color:#3d4a46;margin:0 0 8px;}
+.waves{display:flex;flex-direction:column;gap:10px;}
+.wv{display:grid;grid-template-columns:70px 1fr;gap:14px;border:1px solid #DCE3E0;border-radius:6px;background:#fff;padding:12px 14px;}
+.wv .wtag{font-weight:700;color:#fff;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.wv h4{margin:0 0 4px;font-size:13px;color:#085041;}
+.wv .ww{font-size:10.5px;color:#5b6b66;text-transform:uppercase;letter-spacing:.04em;}
+.wv p{font-size:12px;line-height:1.55;color:#3d4a46;margin:6px 0 0;}
+.chain{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:11.5px;}
+.chain .node{background:#fff;border:1px solid #DCE3E0;border-radius:5px;padding:5px 9px;}
+.chain .arr{color:#93a09b;font-weight:700;}
+.stk{border-left:3px solid #1D9E75;padding:2px 0 2px 12px;margin:0 0 4px;}
+.stk b{color:#0F6E56;}
+.legend{display:flex;gap:16px;align-items:center;font-size:11.5px;color:#41504b;margin:2px 0 10px;flex-wrap:wrap;}
+.legend .lk{display:inline-flex;align-items:center;gap:6px;}
+.legend .sw{width:14px;height:10px;border-radius:2px;display:inline-block;}
+.legend .sw.line{height:3px;} .legend .sw.tgt{background:none;border-top:2px dashed #93a09b;height:0;width:16px;}
+.mini{font-size:10.5px;color:#8a968f;margin-top:3px;}
+</style>
+</head>
+<body>
+<main>
+<span class="page-tag" style="background:#0F6E56">Serving the Stakeholder · Accounting Officer</span><h1>Capability Risk Register</h1>
+<p class="lede">Where vendor dependency, skills scarcity, ageing technology, missing integration or institutional weakness create operational risk. Answers the Director-General and the Minister.</p><div class="ctx"><span>Exposure = Impact × Likelihood</span><span>11 risks · 3 at ≥ 20</span><span>Tested at every gate by the ARB</span></div>
+
+<div class="kpis"><div class="kpi bad"><div class="n">25</div><div class="l">top exposure (R1 · delivery capability)</div></div><div class="kpi bad"><div class="n">3</div><div class="l">risks at exposure ≥ 20 the ARB must test at every gate</div></div><div class="kpi warn"><div class="n">11</div><div class="l">capability risks on the register</div></div><div class="kpi warn"><div class="n" style=font-size:15px;>R1·R3·R7</div><div class="l">the three the Architecture Review Board watches</div></div></div><p class="body">The Capability Risk Register records where vendor dependency, skills scarcity, ageing technology, missing integration or institutional weakness create operational risk. <b>Exposure = Impact × Likelihood</b>, each scored 1–5. It is the DG's and the Minister's answer to "what is the risk of proceeding" — and of not proceeding.</p><h2 class="sh">The register, ranked by exposure</h2><table class="tbl"><thead><tr><th>#</th><th>Risk</th><th>Category</th><th>Impact</th><th>Likel.</th><th>Exposure</th><th>The risk in full</th></tr></thead><tbody><tr><td>R1</td><td>Delivery capability is not built, and W1 proceeds anyway</td><td>Institutional</td><td>5</td><td>5</td><td><div class="barwrap"><div class="bar"><span style="width:100%;background:#C0392B"></span></div><span class="bt">25</span></div></td><td>The gate is ignored under political pressure to show progress.</td></tr><tr><td>R3</td><td>Procurement cannot acquire the integration fabric in time</td><td>Procurement</td><td>5</td><td>4</td><td><div class="barwrap"><div class="bar"><span style="width:80%;background:#C0392B"></span></div><span class="bt">20</span></div></td><td>EE Dim 6 = 1. A tender for an ESB run through the current route will be delayed, contested or aborted.</td></tr><tr><td>R2</td><td>Key-person dependency across 19 items</td><td>Workforce</td><td>4</td><td>4</td><td><div class="barwrap"><div class="bar"><span style="width:64%;background:#E08A1E"></span></div><span class="bt">16</span></div></td><td>19 items bound by X.G2 — the knowledge dies with the individual.</td></tr><tr><td>R4</td><td>External authorities do not grant the interfaces</td><td>Partnership</td><td>4</td><td>4</td><td><div class="barwrap"><div class="bar"><span style="width:64%;background:#E08A1E"></span></div><span class="bt">16</span></div></td><td>DHA, Deeds, SASSA and SARS must agree to serve APIs. None is within the department's control.</td></tr><tr><td>R9</td><td>Digital skills to operate the future state do not exist</td><td>Workforce</td><td>4</td><td>4</td><td><div class="barwrap"><div class="bar"><span style="width:64%;background:#E08A1E"></span></div><span class="bt">16</span></div></td><td>EE Dim 2 = 2. The department can procure an ESB and then be unable to run it.</td></tr><tr><td>R10</td><td>Funding is granted as a one-off project, not a protected line</td><td>Funding</td><td>4</td><td>4</td><td><div class="barwrap"><div class="bar"><span style="width:64%;background:#E08A1E"></span></div><span class="bt">16</span></div></td><td>EE Dim 5 = 2. A four-year programme on annual grant will be cut in year two.</td></tr><tr><td>R5</td><td>Vendor dependency on a single integration platform</td><td>Technology</td><td>3</td><td>4</td><td><div class="barwrap"><div class="bar"><span style="width:48%;background:#E08A1E"></span></div><span class="bt">12</span></div></td><td>A proprietary ESB re-creates the lock-in the department already suffers.</td></tr><tr><td>R6</td><td>The golden record is built before the integration fabric exists</td><td>Sequencing</td><td>4</td><td>3</td><td><div class="barwrap"><div class="bar"><span style="width:48%;background:#E08A1E"></span></div><span class="bt">12</span></div></td><td>A master-data programme in parallel with W1 produces a record nothing can read.</td></tr><tr><td>R8</td><td>Ageing HSS platform fails during the programme</td><td>Technology</td><td>4</td><td>3</td><td><div class="barwrap"><div class="bar"><span style="width:48%;background:#E08A1E"></span></div><span class="bt">12</span></div></td><td>HSS is the system of record for subsidy and scores 2; it must survive four years.</td></tr><tr><td>R7</td><td>Shadow IT is retired before its replacement is in production</td><td>Delivery</td><td>5</td><td>2</td><td><div class="barwrap"><div class="bar"><span style="width:40%;background:#1D9E75"></span></div><span class="bt">10</span></div></td><td>Retiring Grant_Compliance_2025.xlsx early would stop monitoring of R30.9bn in transfers.</td></tr><tr><td>R11</td><td>Sponsorship is spent on visibility rather than on the gate</td><td>Leadership</td><td>3</td><td>3</td><td><div class="barwrap"><div class="bar"><span style="width:36%;background:#1D9E75"></span></div><span class="bt">9</span></div></td><td>The one Sustain-zone asset is spent on a visible app in W0 instead of the delivery build.</td></tr></tbody></table><div class="note bad"><b>The three the board must test.</b> R1 (delivery capability not built, W1 proceeds anyway), R3 (procurement cannot acquire the fabric in time) and R7 (shadow IT retired before its replacement exists) carry exposure at or above 20. They are the risks the <b>Architecture Review Board must test at every gate</b> — because each one, if it materialises, does not slow the programme, it invalidates it.</div><div class="note"><b>Why R1 tops the register.</b> It is the hard gate expressed as a risk: commissioning an integration programme into a department with no standing delivery capability is how every previous initiative failed. Mitigation is not a control — it is the sequence itself: <a href="ea-roadmap.html" style="color:#0F6E56;font-weight:700;text-decoration:none">Wave 0 builds the capability first</a>.</div>
+<div class="note"><b>Source.</b> DHS_PEAR_Assessment_with_EE_v3.xlsx and DHS_PEAR_Phase3_Roadmap_v2.xlsx · Cycle C2 · 2026/27 baseline. Cost, saving and C3–C5 target figures are illustrative planning data created in Phase 3 — sufficient to sequence and test affordability, not a procurement estimate. Worked example, not an official departmental rating.</div>
+
+</main>
+
+<script src="navbar.js"></script>
+</body></html>

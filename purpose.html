@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Purpose — Why this approach · GWEA 2.0 worked example</title>
+<link rel="stylesheet" href="theme.css">
+<style>
+:root{--acc:#1a3a5c}
+.hero{background:linear-gradient(135deg,#12222c 0%,#1a3a5c 60%,#2c6ca3 100%);
+  color:#fff;border-radius:12px;padding:40px 48px;margin:0 0 32px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-40px;top:-40px;width:280px;height:280px;
+  border-radius:50%;background:rgba(255,255,255,.04)}
+.hero::after{content:'';position:absolute;right:60px;bottom:-60px;width:180px;height:180px;
+  border-radius:50%;background:rgba(255,255,255,.03)}
+.hero h1{font-size:32px;margin:0 0 12px;line-height:1.15;color:#fff;max-width:none}
+.hero p{font-size:16px;opacity:.85;max-width:64ch;margin:0}
+.layer-stack{display:flex;flex-direction:column;gap:0;margin:20px 0 28px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.layer{display:grid;grid-template-columns:160px 1fr;align-items:stretch;min-height:72px}
+.layer-badge{display:flex;flex-direction:column;justify-content:center;padding:14px 18px;
+  font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#fff;line-height:1.3}
+.layer-body{padding:14px 20px;display:flex;flex-direction:column;justify-content:center;
+  border-left:1px solid rgba(255,255,255,.12)}
+.layer-body h3{margin:0 0 4px;font-size:15px;color:var(--ink)}
+.layer-body p{margin:0;font-size:13px;color:var(--muted);max-width:none}
+.layer-lbl{font-size:10px;opacity:.7;margin-bottom:4px}
+.layer-name{font-size:15px;font-weight:800}
+.read-arrow{text-align:center;font-size:11px;color:var(--muted);padding:6px 0;
+  letter-spacing:.5px;font-weight:600;text-transform:uppercase}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0 24px}
+.feat-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;
+  border-top:4px solid var(--z-exc)}
+.feat-card h3{margin:0 0 8px;font-size:14px;color:var(--ink)}
+.feat-card p{margin:0;font-size:13px;color:var(--muted);max-width:none}
+.trace-box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:24px 28px;
+  margin:20px 0}
+.trace-box h3{margin:0 0 16px;font-size:16px}
+.trace-row{display:flex;align-items:center;gap:0;margin:4px 0}
+.trace-node{flex:1;text-align:center;padding:10px 8px;border-radius:6px;font-size:12.5px;
+  font-weight:700;color:#fff;line-height:1.3}
+.trace-arrow{flex:0 0 28px;text-align:center;font-size:18px;color:#9aa5b1;font-weight:300}
+.gate-hero{background:linear-gradient(135deg,#1a3a5c,#2c6ca3);color:#fff;border-radius:10px;
+  padding:24px 28px;margin:20px 0}
+.gate-hero h3{margin:0 0 8px;color:#fff;font-size:17px}
+.gate-hero p{margin:0;opacity:.88;font-size:14px;max-width:none}
+.gate-hero .badge{display:inline-block;background:rgba(255,255,255,.18);padding:3px 12px;
+  border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.5px;margin-bottom:10px}
+.evidence-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0}
+.ev-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.ev-num{font-size:28px;font-weight:800;line-height:1;margin-bottom:4px}
+.ev-tag{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+  color:#8a96a3;border:1px solid var(--line);border-radius:3px;padding:1px 6px;margin-bottom:9px}
+.ask-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0 8px}
+.ask-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.ask-card h3{margin:0 0 8px;font-size:14px;color:#1a3a5c}
+.ask-card p{margin:0;font-size:13px;color:var(--muted);max-width:none}
+.cta{display:block;background:linear-gradient(135deg,#177a60,#2E9E5B);color:#fff;border-radius:10px;
+  padding:20px 26px;margin:20px 0 8px;text-decoration:none}
+.cta b{display:block;font-size:16px;margin-bottom:6px;color:#fff}
+.cta span{font-size:13.5px;opacity:.92}
+.ev-lbl{font-size:12px;color:var(--muted)}
+.callout{background:linear-gradient(135deg,#eaf3ff,#f0f7ee);border:1px solid #c2d8f5;
+  border-radius:10px;padding:22px 26px;margin:24px 0}
+.callout p{margin:0;font-size:15px;font-style:italic;color:#1a3a5c;max-width:none}
+.callout cite{display:block;margin-top:8px;font-size:12px;color:var(--muted);font-style:normal}
+@media(max-width:900px){.card-grid,.evidence-grid,.ask-grid{grid-template-columns:1fr}.layer{grid-template-columns:1fr}}
+</style>
+</head><body>
+<main>
+<span class="page-tag" style="background:#1a3a5c">Purpose · Why this approach</span>
+
+<div class="hero">
+  <h1>Building exemplary public institutions — by design</h1>
+  <p>Government has the ambition, the mandate, and the people. What this approach adds is the structural discipline to turn that ambition into measurable citizen outcomes: every investment traceable to evidence, every rand tied to a mandate commitment, every roadmap tested against real delivery capacity before it begins.</p>
+</div>
+
+<div class="callout">
+  <p>"True digital transformation serves as the vehicle for building exemplary, high-performing public institutions. Far beyond a mere technological upgrade, it is a holistic practice that leverages sound enterprise architecture, a prepared enabling environment, and robust digital public infrastructure to drive comprehensive organisational evolution, heightened public trust, and inclusive performance excellence."</p>
+  <cite>— Purpose of Digital Transformation and EA · GWEA 2.0 framework</cite>
+</div>
+
+<h2>The opportunity</h2>
+<p>Digital transformation gives government a once-in-a-generation opportunity to build delivery capacity that scales — where a citizen's record follows them seamlessly across departments, where services are available anywhere, and where every rand spent on technology can be traced directly to an improved outcome. Achieving that requires something more than technology projects: it requires architecture, readiness, and a shared understanding of what good looks like. That is exactly what this framework provides.</p>
+
+<h2>Why it matters now — the cost of leaving this to chance</h2>
+<p>Departments already carry the consequences of an un-architected estate, and they carry them in public.
+Audit findings recur year after year because the same data is captured in three systems and reconciles in
+none. Conditional grants go unspent because a project could not be procured, staffed and delivered inside the
+financial year. Parliamentary questions take weeks to answer because no one holds a single authoritative
+record. Annual Performance Plan targets are missed, and the department cannot say precisely which capability
+gap caused the miss — which means the following year's plan repeats the same assumption. None of this is a
+technology failure. It is the absence of a shared, evidence-based picture of what the department has, what it
+is worth, and what to fix first. That picture is what this method produces, and it is the same picture the
+Auditor-General, National Treasury and the Presidency are increasingly asking departments to show.</p>
+
+<h2>The layered model — read upward and downward</h2>
+<p>Every element of government delivery is connected. The levels below enable the level above. Read <strong>upward</strong> to understand what makes success possible. Read <strong>downward</strong> to understand which specific element to strengthen when a target needs to improve.</p>
+<p class="small">These four levels describe how the <em>framework</em> fits together. They are not the five
+ArchiMate architecture layers (Motivation, Strategy, Business, IS Solution, Technology) used from Phase 1
+onward to classify a department's own catalogue items — that is a different model, one level down.</p>
+
+<div class="layer-stack">
+  <div class="layer" style="background:#f8f9fb">
+    <div class="layer-badge" style="background:#1a3a5c">
+      <div class="layer-lbl">Level 4</div>
+      <div class="layer-name">THE GOAL</div>
+    </div>
+    <div class="layer-body">
+      <h3>Performance Excellence in Government</h3>
+      <p>Exemplary, high-performing public institutions — built by design, not heroic effort — that deliver outcomes citizens feel, meet mandate commitments, and earn lasting public trust. <em>This is the layer Parliament, Treasury and the Auditor-General measure the department against.</em></p>
+    </div>
+  </div>
+  <div class="read-arrow">▲ each layer enables the layer above it ▲</div>
+  <div class="layer" style="background:#fff">
+    <div class="layer-badge" style="background:#2f7a3a">
+      <div class="layer-lbl">Level 3</div>
+      <div class="layer-name">THE PRACTICE</div>
+    </div>
+    <div class="layer-body">
+      <h3>Digital Transformation</h3>
+      <p>The holistic practice — leverages architecture, a prepared enabling environment and digital capabilities to drive comprehensive organisational evolution, sustained delivery capability, and inclusive citizen outcomes. It encompasses people, process and technology together — not technology alone.</p>
+    </div>
+  </div>
+  <div class="read-arrow">▲ ▲</div>
+  <div class="layer" style="background:#fff">
+    <div class="layer-badge" style="background:#2c6ca3">
+      <div class="layer-lbl">Level 2</div>
+      <div class="layer-name">THE SCAFFOLD</div>
+    </div>
+    <div class="layer-body">
+      <h3>Enterprise Architecture</h3>
+      <p>Catalogues and assesses 15 architecture elements across five ArchiMate layers — the structural scaffold that makes delivery possible and gives every decision a named, objective basis. Also catalogues and assesses 11 enabling-environment conditions so the department always knows what is ready and what to strengthen next.</p>
+    </div>
+  </div>
+  <div class="read-arrow">▲ ▲</div>
+  <div class="layer" style="background:#fff">
+    <div class="layer-badge" style="background:#5b4fa0">
+      <div class="layer-lbl">Level 1</div>
+      <div class="layer-name">THE FOUNDATION</div>
+    </div>
+    <div class="layer-body">
+      <h3>Digital Solutions &amp; Digital Public Infrastructure</h3>
+      <p>Shared platforms and APIs — including national DPI for identity, payments, and data exchange — that enable secure interoperability across government and progressively lower the cost of serving every citizen. Technology is the foundation that makes everything above it possible.</p>
+    </div>
+  </div>
+</div>
+
+<h2>The evidence chain — connecting spending to outcomes</h2>
+<p>The defining strength of this approach is full traceability in both directions. Every approved business case links investment to a specific architectural element, which links to a specific mandate outcome. Leaders can see exactly what they are buying and what it will move.</p>
+
+<div class="trace-box">
+  <h3 style="color:#1a3a5c">Understand downward — from outcome to opportunity</h3>
+  <div class="trace-row">
+    <div class="trace-node" style="background:#1a3a5c">Performance target</div>
+    <div class="trace-arrow">→</div>
+    <div class="trace-node" style="background:#2c6ca3">Named architecture element<br><span style="font-weight:400;font-size:10px">(which of the 15 elements?)</span></div>
+    <div class="trace-arrow">→</div>
+    <div class="trace-node" style="background:#b07d1c">Enabling-environment condition<br><span style="font-weight:400;font-size:10px">(which of the 11 conditions?)</span></div>
+    <div class="trace-arrow">→</div>
+    <div class="trace-node" style="background:#177a60">Evidence-based opportunity</div>
+  </div>
+  <div style="margin-top:18px;border-top:1px solid var(--line);padding-top:16px">
+  <h3 style="color:#2E9E5B;margin-top:0">Build upward — from investment to impact</h3>
+  <div class="trace-row">
+    <div class="trace-node" style="background:#2E9E5B">Targeted investment</div>
+    <div class="trace-arrow">→</div>
+    <div class="trace-node" style="background:#2c6ca3">Architectural improvement<br><span style="font-weight:400;font-size:10px">(scored before and after)</span></div>
+    <div class="trace-arrow">→</div>
+    <div class="trace-node" style="background:#177a60">Digital transformation initiative<br><span style="font-weight:400;font-size:10px">(baseline, target, owner)</span></div>
+    <div class="trace-arrow">→</div>
+    <div class="trace-node" style="background:#1a3a5c">Measurable outcome improvement</div>
+  </div>
+  </div>
+  <p class="small" style="margin-top:14px;margin-bottom:0">Every initiative in the remedial action plan (Phase 4) points to a named element in the architecture catalogue (Phase 1), an objective score (Phase 2), and a prioritised focus area (Phase 3). Full line of sight from spending to citizen outcome.</p>
+</div>
+
+<h2>Three foundations of sustained delivery</h2>
+<p>Lasting improvement rests on three interlocking components working together. This framework makes all three visible, measurable, and actionable — for the first time in a single integrated assessment.</p>
+
+<div class="grid3" style="margin:16px 0">
+  <div class="card" style="border-top:4px solid #1a3a5c">
+    <h3 style="margin-top:0;color:#1a3a5c">1 · The mandate</h3>
+    <p class="small" style="max-width:none">Outcome, Client, Value Proposition — the three measurable ends the department is accountable for. Every architectural decision ultimately serves one or more of these, making prioritisation principled rather than political.</p>
+    <div style="margin-top:10px">
+      <span class="pill">Outcome</span>&nbsp;<span class="pill">Client reach</span>&nbsp;<span class="pill">Value proposition</span>
+    </div>
+  </div>
+  <div class="card" style="border-top:4px solid #2c6ca3">
+    <h3 style="margin-top:0;color:#2c6ca3">2 · The enterprise architecture</h3>
+    <p class="small" style="max-width:none">15 elements across five layers — the structural scaffold that makes delivery possible. Objectively scored and traceable, so improvement decisions are grounded in evidence rather than opinion.</p>
+    <div style="margin-top:10px;font-size:11px;color:var(--muted)">Strategy · Business · IS Solution · Technology · Motivation</div>
+  </div>
+  <div class="card" style="border-top:4px solid #b07d1c">
+    <h3 style="margin-top:0;color:#b07d1c">3 · The enabling environment</h3>
+    <p class="small" style="max-width:none">11 conditions — from policy and funding to data stewardship and delivery capability — that determine whether the roadmap can be executed. Assessed and strengthened in parallel with the architecture itself.</p>
+    <div style="margin-top:10px">
+      <span class="pill" style="font-size:11px">Policy</span>&nbsp;
+      <span class="pill" style="font-size:11px">Skills</span>&nbsp;
+      <span class="pill" style="font-size:11px">Funding</span>&nbsp;
+      <span class="pill" style="font-size:11px">Delivery capability</span>
+    </div>
+  </div>
+</div>
+
+<div class="gate-hero">
+  <div class="badge">HARD GATE · The foundation of credible delivery</div>
+  <h3>Dimension 11 — Change &amp; Delivery Capability</h3>
+  <p>This enabling-environment dimension must reach <strong>Established (level 3)</strong> before the architecture roadmap is approved for execution — because a department with strong delivery capability multiplies the value of every investment it makes. Building this capability first is not a constraint; it is the single most important accelerant in the whole framework.</p>
+  <p style="margin-top:12px;opacity:.88">Departments that invest in delivery muscle — a functioning PMO, experienced programme managers, a track record of completing projects on scope and on time — get dramatically more value from every rand spent on technology and architecture. The gate exists to secure that advantage before anything ambitious begins.</p>
+</div>
+
+<h2>What makes this approach distinctive</h2>
+
+<div class="card-grid">
+  <div class="feat-card">
+    <h3>Diagnosis before prescription</h3>
+    <p>Every improvement opportunity is traced to a named, scored architectural element before any investment is proposed. The business case is built on evidence — not estimates — which means approval decisions are well-founded and benefits are verifiable.</p>
+  </div>
+  <div class="feat-card">
+    <h3>Evidence-based business cases</h3>
+    <p>Business cases are anchored in objective baseline scores, named elements, and projected score improvements. Approval committees can interrogate the logic, compare options, and track delivery — turning investment governance into a genuine value conversation.</p>
+  </div>
+  <div class="feat-card">
+    <h3>Delivery capability built first</h3>
+    <p>The hard gate ensures that delivery muscle is developed as the first investment — so when the ambitious architecture work begins, the department is genuinely ready to execute it. Capability before complexity.</p>
+  </div>
+  <div class="feat-card">
+    <h3>Enabling environment as first-class</h3>
+    <p>Policy, procurement agility, data stewardship and executive sponsorship are assessed and improved in parallel with the technology architecture. Readiness is built alongside the plan, not discovered as a gap after go-live.</p>
+  </div>
+  <div class="feat-card">
+    <h3>A repeatable improvement cycle</h3>
+    <p>GWEA 2.0 is a five-phase cycle tied to the government planning calendar. Each cycle produces a refreshed baseline, an updated roadmap, and measured benefits from the previous cycle. Improvement compounds over time.</p>
+  </div>
+  <div class="feat-card">
+    <h3>Shared infrastructure, greater reach</h3>
+    <p>The technology layer is built toward Digital Public Infrastructure — national shared platforms for identity, payments and data exchange. Departments progressively stop duplicating capability in isolation, and the savings in cost and complexity are reinvested into citizen outcomes.</p>
+  </div>
+</div>
+
+<h2>What the future state looks like — the targets a full cycle sets</h2>
+<p>The figures below are the <b>targets</b> a department commits to when it enters a full GWEA 2.0 improvement
+cycle — not results already achieved. They are stated up front precisely so that progress against them can be
+measured honestly, cycle after cycle.</p>
+
+<div class="evidence-grid">
+  <div class="ev-card">
+    <div class="ev-tag">Target</div>
+    <div class="ev-num" style="color:#2E9E5B">1</div>
+    <div class="ev-lbl">Authoritative golden record per beneficiary — trusted, shared, and always current</div>
+  </div>
+  <div class="ev-card">
+    <div class="ev-tag">Target</div>
+    <div class="ev-num" style="color:#2E9E5B">100%</div>
+    <div class="ev-lbl">Business cases grounded in scored baselines and traceable to mandate outcomes</div>
+  </div>
+  <div class="ev-card">
+    <div class="ev-tag">Target</div>
+    <div class="ev-num" style="color:#2c6ca3">H1→H2→H3</div>
+    <div class="ev-lbl">Three sequenced horizons — stabilise, integrate, then transform to DPI</div>
+  </div>
+  <div class="ev-card">
+    <div class="ev-tag">Target</div>
+    <div class="ev-num" style="color:#5b4fa0">DPI</div>
+    <div class="ev-lbl">National digital public infrastructure serving citizens across every department</div>
+  </div>
+  <div class="ev-card">
+    <div class="ev-tag">Target</div>
+    <div class="ev-num" style="color:#b07d1c">EE 3</div>
+    <div class="ev-lbl">Every enabling dimension at Established level — delivery capability institutionalised</div>
+  </div>
+  <div class="ev-card">
+    <div class="ev-tag">Target</div>
+    <div class="ev-num" style="color:#1a3a5c">↑APP</div>
+    <div class="ev-lbl">Annual Performance Plan targets met — and the architectural evidence of exactly why</div>
+  </div>
+</div>
+
+<h2>What this asks of a department</h2>
+<p>The method is deliberately built so that the first step is small, cheap and reversible. A department does
+not commit to a programme; it commits to establishing an honest baseline, and decides what to do next once it
+can see the picture.</p>
+
+<div class="ask-grid">
+  <div class="ask-card">
+    <h3>Step one — a two-hour conversation</h3>
+    <p>Phase 0 is a 30-question maturity questionnaire across six dimensions, completed in a single structured
+    interview with the department's ICT, planning and M&amp;E leads. It produces a scored baseline against the
+    3.0 target and a written finding per dimension. Nothing else is required to start.</p>
+  </div>
+  <div class="ask-card">
+    <h3>What the department supplies</h3>
+    <p>Documents the department already has and already tables: the Annual Performance Plan, the Service
+    Delivery Model, OMF process maps, the ICT Plan (PSR Reg 93), the application and asset registers, and
+    existing data-sharing agreements. No new documentation is written for the assessment.</p>
+  </div>
+  <div class="ask-card">
+    <h3>What it costs in time</h3>
+    <p>Phase 0 is one interview. A full Phase 1–2 catalogue and assessment runs over several weeks alongside
+    normal work, drawing mainly on the ICT, planning and programme functions. Phases 3–5 are tied to the
+    existing planning calendar rather than adding a new one.</p>
+  </div>
+  <div class="ask-card">
+    <h3>What the department holds afterwards</h3>
+    <p>A complete catalogue of 15 architecture elements, an objective score with a named binding constraint
+    per element, an eleven-dimension readiness profile, a sequenced three-horizon roadmap, and a standing set
+    of stakeholder artefacts — from the Architecture Health Report to the Strategic Investment Case — that can
+    be tabled to executive committee, Treasury and the Auditor-General.</p>
+  </div>
+</div>
+
+<a class="cta" href="phase0.html">
+  <b>Start here — Phase 0: the maturity baseline &rarr;</b>
+  <span>Thirty questions, six dimensions, one interview. See the worked example of what a department gets back
+  before committing to anything further.</span>
+</a>
+
+<div class="note"><b>The core commitment.</b> This framework makes digital transformation something government can plan with confidence, govern with clarity, and measure with honesty. When progress is made, you will know precisely why. When something needs attention, you will know exactly where to act. That is the foundation of every evidence-based business case for change.</div>
+
+<div class="foot">GWEA 2.0 worked example — Department of Human Settlements (Vote 33) · Cycle C2 · 2026/27 baseline.
+Figures are illustrative training data, not an official departmental assessment.</div>
+</main>
+<script src="navbar.js"></script>
+</body></html>

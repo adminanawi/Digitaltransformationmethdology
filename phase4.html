@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 4 — Remedial Action Projects · GWEA 2.0 worked example</title>
+<link rel="stylesheet" href="theme.css">
+<style>:root{--acc:#a5402a}</style>
+</head><body>
+<main>
+<span class="page-tag" style="background:#a5402a">Phase 4 · Remedial</span>
+<h1>Phase 4 — Remedial Action Projects</h1>
+<p class="lede">The output is a delivery dashboard: the roadmap's transition architectures tracked as projects with stage and RAG status.</p>
+
+<p><b>Output of this phase — an implementation dashboard.</b> The roadmap's transition architectures become
+remedial projects with owners, stages and RAG status. Phase 4 is about <em>tracking delivery</em>, so the
+output is a live portfolio view — not another document.</p>
+
+<h2>Delivery stages</h2>
+<div class="flow">
+<div class="step" style="background:#8894a3"><b>Initiation</b><span>Mandate &amp; sponsor</span></div>
+<div class="step" style="background:#2c6ca3"><b>Design</b><span>Transition architecture</span></div>
+<div class="step" style="background:#177a60"><b>In delivery</b><span>Build &amp; test</span></div>
+<div class="step" style="background:#2f9e5b"><b>Embed</b><span>Operate &amp; measure</span></div>
+<div class="step" style="background:#5b4fa0"><b>Closed</b><span>Benefits realised</span></div></div>
+
+<div class="grid4">
+ <div class="kpi"><div class="n">12</div><div class="l">Active remedial projects</div></div>
+ <div class="kpi"><div class="n" style="color:var(--z-exc)">5</div><div class="l">On track (green)</div></div>
+ <div class="kpi"><div class="n" style="color:var(--z-good)">5</div><div class="l">At risk (amber)</div></div>
+ <div class="kpi"><div class="n" style="color:var(--z-int)">2</div><div class="l">Off track (red)</div></div>
+</div>
+
+<h2>Remedial-action portfolio</h2>
+<style>
+.stg{border-radius:8px;margin:10px 0;overflow:hidden;border:1px solid var(--line)}
+.stg-hdr{display:flex;align-items:center;gap:10px;padding:11px 16px;color:#fff;cursor:pointer;user-select:none}
+.stg-hdr b{flex:1;font-size:14px}
+.stg-hdr .stg-count{font-size:12px;opacity:.85}
+.stg-hdr .stg-caret{font-size:15px;transition:transform .2s ease}
+.stg.open .stg-caret{transform:rotate(90deg)}
+.stg-body{display:none;background:#fff}
+.stg.open .stg-body{display:block}
+.stg-body table{margin:0;border-radius:0}
+.stg-body th,.stg-body td{border-bottom:1px solid var(--line)}
+.stg-body tr:last-child td{border-bottom:none}
+/* tabs */
+.tab-bar{display:flex;gap:0;border-bottom:2px solid var(--line);margin-bottom:16px}
+.tab-btn{padding:9px 20px;font-size:13px;font-weight:600;color:var(--muted);background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;cursor:pointer;transition:color .15s}
+.tab-btn:hover{color:var(--ink)}
+.tab-btn.active{color:#a5402a;border-bottom-color:#a5402a}
+.tab-panel{display:none}.tab-panel.active{display:block}
+</style>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('stage',this)">Delivery Stage</button>
+  <button class="tab-btn" onclick="switchTab('horizon',this)">Horizon</button>
+</div>
+
+<script>
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active')});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+
+<div id="tab-stage" class="tab-panel active">
+
+<!-- Initiation -->
+<div class="stg open">
+  <div class="stg-hdr" style="background:#8894a3">
+    <b>Initiation</b><span class="stg-count">3 projects · Mandate &amp; sponsor</span><span class="stg-caret">&#9656;</span>
+  </div>
+  <div class="stg-body">
+    <table>
+    <tr><th>Project</th><th>Addresses</th><th>Status</th><th>Progress</th></tr>
+    <tr><td><b>Application modernisation (→ transversal)</b></td><td><span class="pill">Application</span></td>
+        <td><span class="z" style="background:#2E9E5B">Green</span></td>
+        <td><div class="bar"><span style="width:10%;background:#2E9E5B"></span></div><span class="small">10%</span></td></tr>
+    <tr><td><b>Citizen digital identity &amp; pre-fill</b></td><td><span class="pill">Client</span></td>
+        <td><span class="z" style="background:#2E9E5B">Green</span></td>
+        <td><div class="bar"><span style="width:5%;background:#2E9E5B"></span></div><span class="small">5%</span></td></tr>
+    <tr><td><b>Location &amp; GIS data integration</b></td><td><span class="pill">Location</span></td>
+        <td><span class="z" style="background:#E6A817">Amber</span></td>
+        <td><div class="bar"><span style="width:5%;background:#E6A817"></span></div><span class="small">5%</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- Design -->
+<div class="stg open">
+  <div class="stg-hdr" style="background:#2c6ca3">
+    <b>Design</b><span class="stg-count">4 projects · Transition architecture</span><span class="stg-caret">&#9656;</span>
+  </div>
+  <div class="stg-body">
+    <table>
+    <tr><th>Project</th><th>Addresses</th><th>Status</th><th>Progress</th></tr>
+    <tr><td><b>MIOS-conformant Integration Layer</b></td><td><span class="pill">Tech Integration</span></td>
+        <td><span class="z" style="background:#C43C2E">Red</span></td>
+        <td><div class="bar"><span style="width:15%;background:#C43C2E"></span></div><span class="small">15%</span></td></tr>
+    <tr><td><b>Subsidy Application self-service</b></td><td><span class="pill">Service</span></td>
+        <td><span class="z" style="background:#E6A817">Amber</span></td>
+        <td><div class="bar"><span style="width:20%;background:#E6A817"></span></div><span class="small">20%</span></td></tr>
+    <tr><td><b>Technology External connectivity (MzansiXhange / DPI)</b></td><td><span class="pill">Tech External</span></td>
+        <td><span class="z" style="background:#E6A817">Amber</span></td>
+        <td><div class="bar"><span style="width:18%;background:#E6A817"></span></div><span class="small">18%</span></td></tr>
+    <tr><td><b>Transaction Data governance &amp; audit</b></td><td><span class="pill">Txn Data</span></td>
+        <td><span class="z" style="background:#C43C2E">Red</span></td>
+        <td><div class="bar"><span style="width:8%;background:#C43C2E"></span></div><span class="small">8%</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- In delivery -->
+<div class="stg open">
+  <div class="stg-hdr" style="background:#177a60">
+    <b>In delivery</b><span class="stg-count">5 projects · Build &amp; test</span><span class="stg-caret">&#9656;</span>
+  </div>
+  <div class="stg-body">
+    <table>
+    <tr><th>Project</th><th>Addresses</th><th>Status</th><th>Progress</th></tr>
+    <tr><td><b>Change &amp; Delivery Capability (PMO)</b></td><td><span class="pill">Hard gate</span></td>
+        <td><span class="z" style="background:#E6A817">Amber</span></td>
+        <td><div class="bar"><span style="width:55%;background:#E6A817"></span></div><span class="small">55%</span></td></tr>
+    <tr><td><b>Beneficiary Golden Record &amp; stewardship</b></td><td><span class="pill">Master Data</span></td>
+        <td><span class="z" style="background:#2E9E5B">Green</span></td>
+        <td><div class="bar"><span style="width:40%;background:#2E9E5B"></span></div><span class="small">40%</span></td></tr>
+    <tr><td><b>Secure Data Exchange (retire re-keying)</b></td><td><span class="pill">Data Access</span></td>
+        <td><span class="z" style="background:#E6A817">Amber</span></td>
+        <td><div class="bar"><span style="width:35%;background:#E6A817"></span></div><span class="small">35%</span></td></tr>
+    <tr><td><b>Capability maturity &amp; skills uplift</b></td><td><span class="pill">Capability</span></td>
+        <td><span class="z" style="background:#2E9E5B">Green</span></td>
+        <td><div class="bar"><span style="width:45%;background:#2E9E5B"></span></div><span class="small">45%</span></td></tr>
+    <tr><td><b>Process standardisation &amp; automation</b></td><td><span class="pill">Process</span></td>
+        <td><span class="z" style="background:#2E9E5B">Green</span></td>
+        <td><div class="bar"><span style="width:30%;background:#2E9E5B"></span></div><span class="small">30%</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- Embed -->
+<div class="stg">
+  <div class="stg-hdr" style="background:#2f9e5b">
+    <b>Embed</b><span class="stg-count">0 projects · Operate &amp; measure</span><span class="stg-caret">&#9656;</span>
+  </div>
+  <div class="stg-body">
+    <p style="padding:14px 16px;margin:0;color:var(--muted);font-size:13.5px">No projects at this stage yet.</p>
+  </div>
+</div>
+
+<!-- Closed -->
+<div class="stg">
+  <div class="stg-hdr" style="background:#5b4fa0">
+    <b>Closed</b><span class="stg-count">0 projects · Benefits realised</span><span class="stg-caret">&#9656;</span>
+  </div>
+  <div class="stg-body">
+    <p style="padding:14px 16px;margin:0;color:var(--muted);font-size:13.5px">No projects closed yet.</p>
+  </div>
+</div>
+
+</div><!-- /tab-stage -->
+
+<!-- HORIZON TAB -->
+<div id="tab-horizon" class="tab-panel">
+
+<!-- H1 -->
+<div class="stg open">
+  <div class="stg-hdr" style="background:#2f9e5b">
+    <b>H1 · Stabilise &amp; enable</b><span class="stg-count">5 projects · 0–12 months</span><span class="stg-caret">&#9656;</span>
+  </div>
+  <div class="stg-body">
+    <table>
+    <tr><th>Project</th><th>Addresses</th><th>Stage</th><th>Status</th><th>Progress</th></tr>
+    <tr><td><b>Change &amp; Delivery Capability (PMO)</b></td><td><span class="pill">Hard gate</span></td><td>In delivery</td>
+        <td><span class="z" style="background:#E6A817">Amber</span></td>
+        <td><div class="bar"><span style="width:55%;background:#E6A817"></span></div><span class="small">55%</span></td></tr>
+    <tr><td><b>Beneficiary Golden Record &amp; stewardship</b></td><td><span class="pill">Master Data</span></td><td>In delivery</td>
+        <td><span class="z" style="background:#2E9E5B">Green</span></td>
+        <td><div class="bar"><span style="width:40%;background:#2E9E5B"></span></div><span class="small">40%</span></td></tr>
+    <tr><td><b>Secure Data Exchange (retire re-keying)</b></td><td><span class="pill">Data Access</span></td><td>In delivery</td>
+        <td><span class="z" style="background:#E6A817">Amber</span></td>
+        <td><div class="bar"><span style="width:35%;background:#E6A817"></span></div><span class="small">35%</span></td></tr>
+    <tr><td><b>Capability maturity &amp; skills uplift</b></td><td><span class="pill">Capability</span></td><td>In delivery</td>
+        <td><span class="z" style="background:#2E9E5B">Green</span></td>
+        <td><div class="bar"><span style="width:45%;background:#2E9E5B"></span></div><span class="small">45%</span></td></tr>
+    <tr><td><b>Process standardisation &amp; automation</b></td><td><span class="pill">Process</span></td><td>In delivery</td>
+        <td><span class="z" style="background:#2E9E5B">Green</span></td>
+        <td><div class="bar"><span style="width:30%;background:#2E9E5B"></span></div><span class="small">30%</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- H2 -->
+<div class="stg open">
+  <div class="stg-hdr" style="background:#2c6ca3">
+    <b>H2 · Integrate</b><span class="stg-count">6 projects · 12–24 months</span><span class="stg-caret">&#9656;</span>
+  </div>
+  <div class="stg-body">
+    <table>
+    <tr><th>Project</th><th>Addresses</th><th>Stage</th><th>Status</th><th>Progress</th></tr>
+    <tr><td><b>MIOS-conformant Integration Layer</b></td><td><span class="pill">Tech Integration</span></td><td>Design</td>
+        <td><span class="z" style="background:#C43C2E">Red</span></td>
+        <td><div class="bar"><span style="width:15%;background:#C43C2E"></span></div><span class="small">15%</span></td></tr>
+    <tr><td><b>Application modernisation (→ transversal)</b></td><td><span class="pill">Application</span></td><td>Initiation</td>
+        <td><span class="z" style="background:#2E9E5B">Green</span></td>
+        <td><div class="bar"><span style="width:10%;background:#2E9E5B"></span></div><span class="small">10%</span></td></tr>
+    <tr><td><b>Subsidy Application self-service</b></td><td><span class="pill">Service</span></td><td>Design</td>
+        <td><span class="z" style="background:#E6A817">Amber</span></td>
+        <td><div class="bar"><span style="width:20%;background:#E6A817"></span></div><span class="small">20%</span></td></tr>
+    <tr><td><b>Location &amp; GIS data integration</b></td><td><span class="pill">Location</span></td><td>Initiation</td>
+        <td><span class="z" style="background:#E6A817">Amber</span></td>
+        <td><div class="bar"><span style="width:5%;background:#E6A817"></span></div><span class="small">5%</span></td></tr>
+    <tr><td><b>Transaction Data governance &amp; audit</b></td><td><span class="pill">Txn Data</span></td><td>Design</td>
+        <td><span class="z" style="background:#C43C2E">Red</span></td>
+        <td><div class="bar"><span style="width:8%;background:#C43C2E"></span></div><span class="small">8%</span></td></tr>
+    <tr><td><b>Citizen digital identity &amp; pre-fill</b></td><td><span class="pill">Client</span></td><td>Initiation</td>
+        <td><span class="z" style="background:#2E9E5B">Green</span></td>
+        <td><div class="bar"><span style="width:5%;background:#2E9E5B"></span></div><span class="small">5%</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- H3 -->
+<div class="stg open">
+  <div class="stg-hdr" style="background:#5b4fa0">
+    <b>H3 · Transform to DPI</b><span class="stg-count">1 project · 24–48 months</span><span class="stg-caret">&#9656;</span>
+  </div>
+  <div class="stg-body">
+    <table>
+    <tr><th>Project</th><th>Addresses</th><th>Stage</th><th>Status</th><th>Progress</th></tr>
+    <tr><td><b>Technology External connectivity (MzansiXhange / DPI)</b></td><td><span class="pill">Tech External</span></td><td>Design</td>
+        <td><span class="z" style="background:#E6A817">Amber</span></td>
+        <td><div class="bar"><span style="width:18%;background:#E6A817"></span></div><span class="small">18%</span></td></tr>
+    </table>
+  </div>
+</div>
+
+</div><!-- /tab-horizon -->
+
+<script>
+document.querySelectorAll('.stg-hdr').forEach(function(h){
+  h.addEventListener('click',function(){h.parentElement.classList.toggle('open');});
+});
+</script>
+<p class="small">Note the sequencing discipline: the PMO (hard gate) is deliberately the most advanced
+project, because nothing ambitious may proceed until it lands. Red here means what red should mean —
+<b>behind plan</b>. The MIOS integration layer and Transaction Data governance are both genuinely late
+against their own design milestones, and the dashboard says so rather than recolouring them because a
+dependency was always going to slow them. The amber on the PMO is the finding that matters most: the one
+project the entire roadmap waits on is not yet comfortably on track.</p>
+
+<div class="note"><b>What "good" looks like here.</b> A healthy Phase-4 dashboard is honest — it shows red
+where reality is red — and every project traces to a focus area from Phase 3, which traces to a binding
+dimension from Phase 2, which traces to a catalogue item from Phase 1. Full line of sight, end to end.</div>
+
+
+
+
+<h2>4-year delivery roadmap (Gantt)</h2>
+<p>The remedial portfolio, sequenced across 16 quarters. Each bar is one of the twelve remedial projects listed above; colour marks the horizon it belongs to. Read left-to-right: the department moves from a manual, siloed current state to an integrated, DPI-served future state — with delivery capability built first, because the hard gate forbids anything ambitious before it.</p>
+<div class="gantt-wrap"><div class="gantt">
+<div class="gantt-row head"><div class="gantt-lbl"></div><div class="lane" style="height:auto"><div class="yr">YEAR 1</div><div class="yr">YEAR 2</div><div class="yr">YEAR 3</div><div class="yr">YEAR 4</div></div></div>
+<div class="gantt-row head"><div class="gantt-lbl"></div><div class="lane" style="height:18px;background:none"><div class="qk" style="grid-column:1 / span 1">Q1</div><div class="qk" style="grid-column:2 / span 1">Q2</div><div class="qk" style="grid-column:3 / span 1">Q3</div><div class="qk" style="grid-column:4 / span 1">Q4</div><div class="qk" style="grid-column:5 / span 1">Q1</div><div class="qk" style="grid-column:6 / span 1">Q2</div><div class="qk" style="grid-column:7 / span 1">Q3</div><div class="qk" style="grid-column:8 / span 1">Q4</div><div class="qk" style="grid-column:9 / span 1">Q1</div><div class="qk" style="grid-column:10 / span 1">Q2</div><div class="qk" style="grid-column:11 / span 1">Q3</div><div class="qk" style="grid-column:12 / span 1">Q4</div><div class="qk" style="grid-column:13 / span 1">Q1</div><div class="qk" style="grid-column:14 / span 1">Q2</div><div class="qk" style="grid-column:15 / span 1">Q3</div><div class="qk" style="grid-column:16 / span 1">Q4</div></div></div>
+<div class="state-band"><div></div><div class="lane"><div class="cur">◄ CURRENT · AMI 26 · Intervene · manual &amp; siloed</div><div class="fut">FUTURE · Integrated · DPI-served · citizen self-service ►</div></div></div>
+<div class="gantt-row"><div class="gantt-lbl b">Change &amp; Delivery Capability (PMO)</div><div class="lane"><div class="bar" style="grid-column:1 / span 5;background:#2f9e5b">Build delivery muscle</div></div></div>
+<div class="gantt-row"><div class="gantt-lbl b">Beneficiary Golden Record &amp; stewardship</div><div class="lane"><div class="bar" style="grid-column:2 / span 7;background:#2f9e5b">Single source of truth</div></div></div>
+<div class="gantt-row"><div class="gantt-lbl b">Secure Data Exchange (retire re-keying)</div><div class="lane"><div class="bar" style="grid-column:3 / span 5;background:#2f9e5b">POPIA-compliant flows</div></div></div>
+<div class="gantt-row"><div class="gantt-lbl b">MIOS Integration Layer / API gateway</div><div class="lane"><div class="bar" style="grid-column:5 / span 6;background:#2c6ca3">Interoperability</div></div></div>
+<div class="gantt-row"><div class="gantt-lbl b">Application modernisation (→ transversal)</div><div class="lane"><div class="bar" style="grid-column:7 / span 7;background:#2c6ca3">Off the silos</div></div></div>
+<div class="gantt-row"><div class="gantt-lbl b">Subsidy digital self-service</div><div class="lane"><div class="bar" style="grid-column:8 / span 5;background:#2c6ca3">Citizen-facing</div></div></div>
+<div class="gantt-row"><div class="gantt-lbl b">Technology External connectivity (MzansiXhange / DPI)</div><div class="lane"><div class="bar" style="grid-column:10 / span 7;background:#5b4fa0">Federated services · real-time title &amp; tenure verification</div></div></div>
+<div class="gantt-row"><div class="gantt-lbl b">Capability maturity &amp; skills uplift</div><div class="lane"><div class="bar" style="grid-column:1 / span 4;background:#2f9e5b">Build capacity</div></div></div>
+<div class="gantt-row"><div class="gantt-lbl b">Process standardisation &amp; automation</div><div class="lane"><div class="bar" style="grid-column:3 / span 6;background:#2f9e5b">Standardise &amp; automate</div></div></div>
+<div class="gantt-row"><div class="gantt-lbl b">Location &amp; GIS data integration</div><div class="lane"><div class="bar" style="grid-column:4 / span 6;background:#2c6ca3">Spatial data layer</div></div></div>
+<div class="gantt-row"><div class="gantt-lbl b">Transaction Data governance &amp; audit</div><div class="lane"><div class="bar" style="grid-column:6 / span 5;background:#2c6ca3">Governed records</div></div></div>
+<div class="gantt-row"><div class="gantt-lbl b">Citizen digital identity &amp; pre-fill</div><div class="lane"><div class="bar" style="grid-column:9 / span 6;background:#2c6ca3">Pre-filled services</div></div></div>
+<div class="gantt-row msrow"><div class="gantt-lbl">Milestones</div><div class="lane" style="height:auto;background:none;align-items:start;padding-top:2px"><div class="msblock" style="grid-column:4 / span 3"><span class="dia ms-gate"></span><span class="t">Hard gate cleared</span></div><div class="msblock" style="grid-column:8 / span 3"><span class="dia ms-go"></span><span class="t">MIOS conformance</span></div><div class="msblock" style="grid-column:11 / span 3"><span class="dia ms-go"></span><span class="t">Subsidy go-live</span></div><div class="msblock" style="grid-column:14 / span 3"><span class="dia ms-go"></span><span class="t">DPI go-live · future state</span></div></div></div>
+</div>
+<div class="gantt-legend"><span><i style="background:#2f9e5b"></i>Horizon 1 · Stabilise &amp; enable</span><span><i style="background:#2c6ca3"></i>Horizon 2 · Integrate</span><span><i style="background:#5b4fa0"></i>Horizon 3 · Transform to DPI</span><span><i class="dia" style="background:#C43C2E"></i>Gate milestone</span><span><i class="dia" style="background:#2E9E5B"></i>Go-live milestone</span></div>
+</div>
+
+<div class="foot">GWEA 2.0 worked example — Department of Human Settlements (Vote 33) · Cycle C2 · 2026/27 baseline.
+Figures are illustrative training data, not an official departmental assessment.</div>
+</main>
+<script src="navbar.js"></script>
+</body></html>

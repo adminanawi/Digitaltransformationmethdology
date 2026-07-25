@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en-ZA"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duplication & Savings Report · GWEA 2.0</title>
+<link rel="stylesheet" href="theme.css">
+<style>
+main{max-width:1080px;}
+.ctx{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 2px;}
+.ctx span{font-size:11px;background:#F1F7F5;border:1px solid #D6E7E1;color:#3C5A51;padding:3px 9px;border-radius:3px;}
+.howto{margin-top:11px;background:#FFF8E8;border:1px solid #EBD9AE;border-left:3px solid #E08A1E;border-radius:6px;padding:9px 12px;font-size:12px;color:#5C4A21;line-height:1.5;}
+.howto b{color:#7A5C1E;}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:20px 0 26px;}
+.kpi{background:#fff;border:1px solid #DCE3E0;border-left:4px solid #1D9E75;border-radius:5px;padding:13px 15px;box-shadow:none;}
+.kpi .n{font-size:24px;font-weight:700;color:#085041;line-height:1.05;}
+.kpi .l{font-size:11px;color:#5b6b66;margin-top:5px;line-height:1.35;}
+.kpi.bad{border-left-color:#C0392B;} .kpi.bad .n{color:#C0392B;}
+.kpi.warn{border-left-color:#E08A1E;} .kpi.warn .n{color:#8A5A12;}
+.kpi.good{border-left-color:#1D9E75;}
+h2.sh{font-size:15px;color:#085041;margin:26px 0 4px;border:none;padding:0;}
+p.sub{font-size:12.5px;color:#5b6b66;margin:0 0 14px;line-height:1.55;max-width:900px;}
+p.body{font-size:13px;color:#3d4a46;line-height:1.65;max-width:900px;margin:0 0 12px;}
+p.body b{color:#0F6E56;}
+.note{margin-top:18px;background:#F1F7F5;border:1px solid #D6E7E1;border-left:3px solid #0F6E56;border-radius:8px;padding:12px 14px;font-size:12.5px;color:#2f463f;line-height:1.6;max-width:940px;}
+.note b{color:#0F6E56;}
+.note.warn{background:#FFF8E8;border-color:#EBD9AE;border-left-color:#E08A1E;color:#5C4A21;}
+.note.warn b{color:#7A5C1E;}
+.note.bad{background:#FCEEEC;border-color:#E7C4BE;border-left-color:#C0392B;color:#6E2B22;}
+.note.bad b{color:#9E2E22;}
+table.tbl{width:100%;border-collapse:collapse;font-size:12px;margin:6px 0 8px;background:#fff;border:1px solid #DCE3E0;}
+table.tbl th{background:#F1F7F5;text-align:left;padding:8px 10px;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;color:#3C5A51;border-bottom:1px solid #DCE3E0;}
+table.tbl td{padding:7px 10px;border-bottom:1px solid #EBEFED;vertical-align:top;line-height:1.45;}
+table.tbl tr:last-child td{border-bottom:none;}
+table.tbl tr:hover td{background:#FAFCFB;}
+table.tbl td.num{text-align:right;}
+.z{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;color:#fff;white-space:nowrap;}
+.z.int{background:#C0392B;} .z.imp{background:#E08A1E;} .z.sus{background:#1D9E75;} .z.con{background:#2E6DA4;}
+.bar{background:#EBEFED;border-radius:5px;height:15px;position:relative;overflow:hidden;min-width:80px;}
+.bar>span{display:block;height:100%;border-radius:5px;}
+.barwrap{display:flex;align-items:center;gap:8px;}
+.barwrap .bt{font-size:11px;color:#41504b;min-width:34px;}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:820px){.cols{grid-template-columns:1fr;}}
+.card{background:#fff;border:1px solid #DCE3E0;border-radius:6px;padding:15px 17px;box-shadow:none;}
+.card h3{margin:0 0 7px;font-size:13.5px;color:#085041;}
+.card p{font-size:12px;line-height:1.6;color:#3d4a46;margin:0 0 8px;}
+.waves{display:flex;flex-direction:column;gap:10px;}
+.wv{display:grid;grid-template-columns:70px 1fr;gap:14px;border:1px solid #DCE3E0;border-radius:6px;background:#fff;padding:12px 14px;}
+.wv .wtag{font-weight:700;color:#fff;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.wv h4{margin:0 0 4px;font-size:13px;color:#085041;}
+.wv .ww{font-size:10.5px;color:#5b6b66;text-transform:uppercase;letter-spacing:.04em;}
+.wv p{font-size:12px;line-height:1.55;color:#3d4a46;margin:6px 0 0;}
+.chain{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:11.5px;}
+.chain .node{background:#fff;border:1px solid #DCE3E0;border-radius:5px;padding:5px 9px;}
+.chain .arr{color:#93a09b;font-weight:700;}
+.stk{border-left:3px solid #1D9E75;padding:2px 0 2px 12px;margin:0 0 4px;}
+.stk b{color:#0F6E56;}
+.legend{display:flex;gap:16px;align-items:center;font-size:11.5px;color:#41504b;margin:2px 0 10px;flex-wrap:wrap;}
+.legend .lk{display:inline-flex;align-items:center;gap:6px;}
+.legend .sw{width:14px;height:10px;border-radius:2px;display:inline-block;}
+.legend .sw.line{height:3px;} .legend .sw.tgt{background:none;border-top:2px dashed #93a09b;height:0;width:16px;}
+.mini{font-size:10.5px;color:#8a968f;margin-top:3px;}
+</style>
+</head>
+<body>
+<main>
+<span class="page-tag" style="background:#0F6E56">Serving the Stakeholder · Treasury / SITA</span><h1>Duplication & Savings Report</h1>
+<p class="lede">The annual recurring value released once the estate is rationalised — cash avoided, run-cost saved and effort released, stated separately and honestly. Answers Treasury and SITA.</p><div class="ctx"><span>R59.8m annual value</span><span>Payback ≈ 8.6 years</span><span>Illustrative planning estimates</span></div>
+
+<div class="kpis"><div class="kpi good"><div class="n">R59.8m</div><div class="l">annual value once realised</div></div><div class="kpi warn"><div class="n">R46.4m</div><div class="l">of it: duplicate & irregular payments prevented</div></div><div class="kpi good"><div class="n">73</div><div class="l">shadow-IT instances retired</div></div><div class="kpi warn"><div class="n">8.6 yrs</div><div class="l">payback on programme cost</div></div></div><p class="body">SITA and Treasury ask where spend is duplicated. The Duplication & Savings model states the annual recurring value released once the estate is rationalised — and states it <b>honestly</b>, separating cash avoided, run-cost saved, and effort released.</p><h2 class="sh">The savings model</h2><table class="tbl"><thead><tr><th>#</th><th>Saving</th><th>Type</th><th>Annual value</th><th>Realised in</th></tr></thead><tbody><tr><td>S1</td><td>Nine provincial delivery trackers consolidated to one data model</td><td>Effort released</td><td>R2.0m</td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>S2</td><td>Manual re-keying between systems eliminated (10 exchanges)</td><td>Effort released</td><td>R5.7m</td><td><span class="z" style="background:#E08A1E">W1</span></td></tr><tr><td>S3</td><td>Quarterly hand-merge of the national M&E picture ended</td><td>Effort released</td><td>R1.2m</td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>S4</td><td>Duplicate & irregular subsidy payments prevented</td><td>Cash — avoided loss</td><td>R46.4m</td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>S5</td><td>Point-to-point interfaces & SFTP batch jobs decommissioned</td><td>Cash — run cost</td><td>R1.0m</td><td><span class="z" style="background:#E08A1E">W1</span></td></tr><tr><td>S6</td><td>Access databases & unmanaged spreadsheets retired</td><td>Risk — not cash</td><td>—</td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>S7</td><td>Hosting consolidation onto governed platform</td><td>Cash — run cost</td><td>R3.5m</td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td><b>TOTAL</b></td><td>Annual recurring value once realised</td><td></td><td><b>R59.8m</b></td><td>—</td></tr></tbody></table><div class="note bad"><b>The dominant saving must be stated honestly.</b> S4 — R46.4m of duplicate and irregular payments prevented — is an <b>avoided loss, not a cash release</b>, and the 0.15%-of-R30.9bn assumption is a Phase-3 estimate that must be replaced with the Auditor-General's actual finding before it is presented to Treasury. Likewise S1–S3 release <b>effort, not cash</b>: in a department scoring 2 on workforce, released effort is redeployed to data stewardship and delivery, not surrendered. It should not be presented as a budget cut.</div><div class="note"><b>The real prize is risk removed, not rands.</b> S6 — retiring 73 unbacked-up, unowned, unauditable shadow instances — saves no licence cost and scores R0 in the model, yet it removes a material public-money dependency (Grant_Compliance_2025.xlsx alone monitors R30.9bn). See the <a href="system-rationalisation.html" style="color:#0F6E56;font-weight:700;text-decoration:none">System Rationalisation Roadmap</a> for the disposition of each.</div>
+<div class="note"><b>Source.</b> DHS_PEAR_Assessment_with_EE_v3.xlsx and DHS_PEAR_Phase3_Roadmap_v2.xlsx · Cycle C2 · 2026/27 baseline. Cost, saving and C3–C5 target figures are illustrative planning data created in Phase 3 — sufficient to sequence and test affordability, not a procurement estimate. Worked example, not an official departmental rating.</div>
+
+</main>
+
+<script src="navbar.js"></script>
+</body></html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en-ZA"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMF Compliance Dashboard · GWEA 2.0</title>
+<link rel="stylesheet" href="theme.css">
+<style>
+main{max-width:1080px;}
+.ctx{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 2px;}
+.ctx span{font-size:11px;background:#F1F7F5;border:1px solid #D6E7E1;color:#3C5A51;padding:3px 9px;border-radius:3px;}
+.howto{margin-top:11px;background:#FFF8E8;border:1px solid #EBD9AE;border-left:3px solid #E08A1E;border-radius:6px;padding:9px 12px;font-size:12px;color:#5C4A21;line-height:1.5;}
+.howto b{color:#7A5C1E;}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:20px 0 26px;}
+.kpi{background:#fff;border:1px solid #DCE3E0;border-left:4px solid #1D9E75;border-radius:5px;padding:13px 15px;box-shadow:none;}
+.kpi .n{font-size:24px;font-weight:700;color:#085041;line-height:1.05;}
+.kpi .l{font-size:11px;color:#5b6b66;margin-top:5px;line-height:1.35;}
+.kpi.bad{border-left-color:#C0392B;} .kpi.bad .n{color:#C0392B;}
+.kpi.warn{border-left-color:#E08A1E;} .kpi.warn .n{color:#8A5A12;}
+.kpi.good{border-left-color:#1D9E75;}
+h2.sh{font-size:15px;color:#085041;margin:26px 0 4px;border:none;padding:0;}
+p.sub{font-size:12.5px;color:#5b6b66;margin:0 0 14px;line-height:1.55;max-width:900px;}
+p.body{font-size:13px;color:#3d4a46;line-height:1.65;max-width:900px;margin:0 0 12px;}
+p.body b{color:#0F6E56;}
+.note{margin-top:18px;background:#F1F7F5;border:1px solid #D6E7E1;border-left:3px solid #0F6E56;border-radius:8px;padding:12px 14px;font-size:12.5px;color:#2f463f;line-height:1.6;max-width:940px;}
+.note b{color:#0F6E56;}
+.note.warn{background:#FFF8E8;border-color:#EBD9AE;border-left-color:#E08A1E;color:#5C4A21;}
+.note.warn b{color:#7A5C1E;}
+.note.bad{background:#FCEEEC;border-color:#E7C4BE;border-left-color:#C0392B;color:#6E2B22;}
+.note.bad b{color:#9E2E22;}
+table.tbl{width:100%;border-collapse:collapse;font-size:12px;margin:6px 0 8px;background:#fff;border:1px solid #DCE3E0;}
+table.tbl th{background:#F1F7F5;text-align:left;padding:8px 10px;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;color:#3C5A51;border-bottom:1px solid #DCE3E0;}
+table.tbl td{padding:7px 10px;border-bottom:1px solid #EBEFED;vertical-align:top;line-height:1.45;}
+table.tbl tr:last-child td{border-bottom:none;}
+table.tbl tr:hover td{background:#FAFCFB;}
+table.tbl td.num{text-align:right;}
+.z{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;color:#fff;white-space:nowrap;}
+.z.int{background:#C0392B;} .z.imp{background:#E08A1E;} .z.sus{background:#1D9E75;} .z.con{background:#2E6DA4;}
+.bar{background:#EBEFED;border-radius:5px;height:15px;position:relative;overflow:hidden;min-width:80px;}
+.bar>span{display:block;height:100%;border-radius:5px;}
+.barwrap{display:flex;align-items:center;gap:8px;}
+.barwrap .bt{font-size:11px;color:#41504b;min-width:34px;}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:820px){.cols{grid-template-columns:1fr;}}
+.card{background:#fff;border:1px solid #DCE3E0;border-radius:6px;padding:15px 17px;box-shadow:none;}
+.card h3{margin:0 0 7px;font-size:13.5px;color:#085041;}
+.card p{font-size:12px;line-height:1.6;color:#3d4a46;margin:0 0 8px;}
+.waves{display:flex;flex-direction:column;gap:10px;}
+.wv{display:grid;grid-template-columns:70px 1fr;gap:14px;border:1px solid #DCE3E0;border-radius:6px;background:#fff;padding:12px 14px;}
+.wv .wtag{font-weight:700;color:#fff;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.wv h4{margin:0 0 4px;font-size:13px;color:#085041;}
+.wv .ww{font-size:10.5px;color:#5b6b66;text-transform:uppercase;letter-spacing:.04em;}
+.wv p{font-size:12px;line-height:1.55;color:#3d4a46;margin:6px 0 0;}
+.chain{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:11.5px;}
+.chain .node{background:#fff;border:1px solid #DCE3E0;border-radius:5px;padding:5px 9px;}
+.chain .arr{color:#93a09b;font-weight:700;}
+.stk{border-left:3px solid #1D9E75;padding:2px 0 2px 12px;margin:0 0 4px;}
+.stk b{color:#0F6E56;}
+.legend{display:flex;gap:16px;align-items:center;font-size:11.5px;color:#41504b;margin:2px 0 10px;flex-wrap:wrap;}
+.legend .lk{display:inline-flex;align-items:center;gap:6px;}
+.legend .sw{width:14px;height:10px;border-radius:2px;display:inline-block;}
+.legend .sw.line{height:3px;} .legend .sw.tgt{background:none;border-top:2px dashed #93a09b;height:0;width:16px;}
+.mini{font-size:10.5px;color:#8a968f;margin-top:3px;}
+</style>
+</head>
+<body>
+<main>
+<span class="page-tag" style="background:#0F6E56">Serving the Stakeholder · Operations</span><h1>OMF Compliance Dashboard</h1>
+<p class="lede">Compliance with the Operations Management Framework — the Service Delivery Model, process maps, SOPs, service standards and charter (PSR Regs 36–38). Answers the SDIP unit and DPSA operations.</p><div class="ctx"><span>OMF · PSR Regs 36–38</span><span>Service 1.55 · Process 1.45</span><span>Evidence-based, not declarative</span></div>
+
+<div class="kpis"><div class="kpi bad"><div class="n">1.45</div><div class="l">Process maturity — the OMF core</div></div><div class="kpi bad"><div class="n">1.55</div><div class="l">Service maturity</div></div><div class="kpi warn"><div class="n" style=font-size:15px;>Regs 36–38</div><div class="l">the OMF obligations assessed</div></div><div class="kpi warn"><div class="n">W3</div><div class="l">when process & service are digitalised</div></div></div><p class="body">The Operations Management Framework is the single richest source the questionnaire draws on — it compels the Service Delivery Model, business process maps, standard operating procedures, service standards and the service charter. Because those are the very artefacts PEAR catalogues, the OMF Compliance Dashboard falls straight out of the assessment. It answers the Batho Pele / SDIP unit and the DPSA operations governance.</p><h2 class="sh">OMF obligations — Regulations 36–38</h2><table class="tbl"><thead><tr><th>OMF obligation</th><th>Elements it populates</th><th>What the assessment finds</th><th>Status</th></tr></thead><tbody><tr><td>Service Delivery Model (Reg 36)</td><td>Client · Service · Process · Location</td><td>Model exists but not reconciled to demand</td><td><span class="z int">Intervene</span></td></tr><tr><td>Service standards & charter (Reg 37)</td><td>Value Proposition (2.0) · Service (1.55)</td><td>Published but not measured against</td><td><span class="z int">Intervene</span></td></tr><tr><td>Business process maps</td><td>Process (1.45)</td><td>Tacit and undocumented; 8.G-series bind</td><td><span class="z int">Intervene</span></td></tr><tr><td>Standard operating procedures</td><td>Process (1.45) · Service (1.55)</td><td>Live in individuals' heads</td><td><span class="z int">Intervene</span></td></tr><tr><td>Service Delivery Improvement Plan (SDIP)</td><td>Value Proposition · Service</td><td>Declarative rather than evidence-based</td><td><span class="z int">Intervene</span></td></tr></tbody></table><div class="note"><b>Why process sits at the bottom.</b> Process (1.45) is the department's second-weakest element after the technology layers. The OMF asks for documented, followed, measured processes; the assessment finds them tacit — living in individuals' heads (the knowledge-continuity binding). Process mapping under the OMF is deliberately deferred to <a href="ea-roadmap.html" style="color:#0F6E56;font-weight:700;text-decoration:none">Wave 3</a>, once the systems that execute the processes exist — remediating the business layer before the root cause would not hold.</div>
+<div class="note"><b>Source.</b> DHS_PEAR_Assessment_with_EE_v3.xlsx and DHS_PEAR_Phase3_Roadmap_v2.xlsx · Cycle C2 · 2026/27 baseline. Cost, saving and C3–C5 target figures are illustrative planning data created in Phase 3 — sufficient to sequence and test affordability, not a procurement estimate. Worked example, not an official departmental rating.</div>
+
+</main>
+
+<script src="navbar.js"></script>
+</body></html>

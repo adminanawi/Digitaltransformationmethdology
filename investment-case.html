@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en-ZA"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategic Investment Case · GWEA 2.0</title>
+<link rel="stylesheet" href="theme.css">
+<style>
+main{max-width:1080px;}
+.ctx{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 2px;}
+.ctx span{font-size:11px;background:#F1F7F5;border:1px solid #D6E7E1;color:#3C5A51;padding:3px 9px;border-radius:3px;}
+.howto{margin-top:11px;background:#FFF8E8;border:1px solid #EBD9AE;border-left:3px solid #E08A1E;border-radius:6px;padding:9px 12px;font-size:12px;color:#5C4A21;line-height:1.5;}
+.howto b{color:#7A5C1E;}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:20px 0 26px;}
+.kpi{background:#fff;border:1px solid #DCE3E0;border-left:4px solid #1D9E75;border-radius:5px;padding:13px 15px;box-shadow:none;}
+.kpi .n{font-size:24px;font-weight:700;color:#085041;line-height:1.05;}
+.kpi .l{font-size:11px;color:#5b6b66;margin-top:5px;line-height:1.35;}
+.kpi.bad{border-left-color:#C0392B;} .kpi.bad .n{color:#C0392B;}
+.kpi.warn{border-left-color:#E08A1E;} .kpi.warn .n{color:#8A5A12;}
+.kpi.good{border-left-color:#1D9E75;}
+h2.sh{font-size:15px;color:#085041;margin:26px 0 4px;border:none;padding:0;}
+p.sub{font-size:12.5px;color:#5b6b66;margin:0 0 14px;line-height:1.55;max-width:900px;}
+p.body{font-size:13px;color:#3d4a46;line-height:1.65;max-width:900px;margin:0 0 12px;}
+p.body b{color:#0F6E56;}
+.note{margin-top:18px;background:#F1F7F5;border:1px solid #D6E7E1;border-left:3px solid #0F6E56;border-radius:8px;padding:12px 14px;font-size:12.5px;color:#2f463f;line-height:1.6;max-width:940px;}
+.note b{color:#0F6E56;}
+.note.warn{background:#FFF8E8;border-color:#EBD9AE;border-left-color:#E08A1E;color:#5C4A21;}
+.note.warn b{color:#7A5C1E;}
+.note.bad{background:#FCEEEC;border-color:#E7C4BE;border-left-color:#C0392B;color:#6E2B22;}
+.note.bad b{color:#9E2E22;}
+table.tbl{width:100%;border-collapse:collapse;font-size:12px;margin:6px 0 8px;background:#fff;border:1px solid #DCE3E0;}
+table.tbl th{background:#F1F7F5;text-align:left;padding:8px 10px;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;color:#3C5A51;border-bottom:1px solid #DCE3E0;}
+table.tbl td{padding:7px 10px;border-bottom:1px solid #EBEFED;vertical-align:top;line-height:1.45;}
+table.tbl tr:last-child td{border-bottom:none;}
+table.tbl tr:hover td{background:#FAFCFB;}
+table.tbl td.num{text-align:right;}
+.z{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;color:#fff;white-space:nowrap;}
+.z.int{background:#C0392B;} .z.imp{background:#E08A1E;} .z.sus{background:#1D9E75;} .z.con{background:#2E6DA4;}
+.bar{background:#EBEFED;border-radius:5px;height:15px;position:relative;overflow:hidden;min-width:80px;}
+.bar>span{display:block;height:100%;border-radius:5px;}
+.barwrap{display:flex;align-items:center;gap:8px;}
+.barwrap .bt{font-size:11px;color:#41504b;min-width:34px;}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:820px){.cols{grid-template-columns:1fr;}}
+.card{background:#fff;border:1px solid #DCE3E0;border-radius:6px;padding:15px 17px;box-shadow:none;}
+.card h3{margin:0 0 7px;font-size:13.5px;color:#085041;}
+.card p{font-size:12px;line-height:1.6;color:#3d4a46;margin:0 0 8px;}
+.waves{display:flex;flex-direction:column;gap:10px;}
+.wv{display:grid;grid-template-columns:70px 1fr;gap:14px;border:1px solid #DCE3E0;border-radius:6px;background:#fff;padding:12px 14px;}
+.wv .wtag{font-weight:700;color:#fff;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.wv h4{margin:0 0 4px;font-size:13px;color:#085041;}
+.wv .ww{font-size:10.5px;color:#5b6b66;text-transform:uppercase;letter-spacing:.04em;}
+.wv p{font-size:12px;line-height:1.55;color:#3d4a46;margin:6px 0 0;}
+.chain{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:11.5px;}
+.chain .node{background:#fff;border:1px solid #DCE3E0;border-radius:5px;padding:5px 9px;}
+.chain .arr{color:#93a09b;font-weight:700;}
+.stk{border-left:3px solid #1D9E75;padding:2px 0 2px 12px;margin:0 0 4px;}
+.stk b{color:#0F6E56;}
+.legend{display:flex;gap:16px;align-items:center;font-size:11.5px;color:#41504b;margin:2px 0 10px;flex-wrap:wrap;}
+.legend .lk{display:inline-flex;align-items:center;gap:6px;}
+.legend .sw{width:14px;height:10px;border-radius:2px;display:inline-block;}
+.legend .sw.line{height:3px;} .legend .sw.tgt{background:none;border-top:2px dashed #93a09b;height:0;width:16px;}
+.mini{font-size:10.5px;color:#8a968f;margin-top:3px;}
+</style>
+</head>
+<body>
+<main>
+<span class="page-tag" style="background:#0F6E56">Serving the Stakeholder · Treasury</span><h1>Strategic Investment Case</h1>
+<p class="lede">The cost of the remediation, sequenced by wave, with a named PFMA funding route for each focus area. Answers National Treasury and the Minister's "where must investment go".</p><div class="ctx"><span>PFMA funding routes</span><span>R512m over four years</span><span>Order-of-magnitude planning figures</span></div><div class="howto">Figures are <b>planning estimates created in Phase 3</b> — enough to sequence and test affordability. They must be replaced with priced options before any procurement.</div>
+
+<div class="kpis"><div class="kpi warn"><div class="n">R512m</div><div class="l">total programme, four years</div></div><div class="kpi warn"><div class="n">≈ R128m</div><div class="l">per year, vs R30.9bn a year in grants monitored on a spreadsheet</div></div><div class="kpi warn"><div class="n">8.6 yrs</div><div class="l">payback on annual value</div></div><div class="kpi warn"><div class="n" style=font-size:15px;>FA-3·4·7</div><div class="l">mandatory Strategic Investment Cases</div></div></div><p class="body">National Treasury and the Minister ask: <i>is this ICT spend justified, is it duplicated elsewhere, and what is the risk of not funding it?</i> The Strategic Investment Case answers strategic question 4 (X1007 §8) — the cost and the funding route, tested against PFMA mechanisms. Costs are order-of-magnitude planning figures created in Phase 3: sufficient to sequence and to test affordability, not a substitute for a procurement estimate.</p><h2 class="sh">Cost by focus area, funding route and wave</h2><table class="tbl"><thead><tr><th>FA</th><th>Focus area</th><th>Cost (R'000→Rm)</th><th>Wave</th><th>Funding route (PFMA)</th></tr></thead><tbody><tr><td>FA-1</td><td>Stand up a standing delivery & programme capability</td><td><b>R48m</b></td><td><span class="z" style="background:#C0392B">W0</span></td><td>MTEF baseline reprioritisation</td></tr><tr><td>FA-2</td><td>Ownership & knowledge continuity</td><td><b>R12m</b></td><td><span class="z" style="background:#C0392B">W0</span></td><td>Operational budget — no new allocation</td></tr><tr><td>FA-6</td><td>Procurement route & protected funding</td><td><b>R8m</b></td><td><span class="z" style="background:#C0392B">W0</span></td><td>Operational; National Treasury engagement</td></tr><tr><td>FA-8</td><td>Fund the capability, not the system</td><td><b>R6m</b></td><td><span class="z" style="background:#E08A1E">W1</span></td><td>Operational budget — CFO</td></tr><tr><td>FA-3</td><td>Integration fabric — ESB & API gateway</td><td><b>R145m</b></td><td><span class="z" style="background:#E08A1E">W1</span></td><td>Strategic Investment Case; MTEF</td></tr><tr><td>FA-4</td><td>Beneficiary golden record & transaction integrity</td><td><b>R95m</b></td><td><span class="z" style="background:#2E6DA4">W2</span></td><td>Strategic Investment Case; MTEF</td></tr><tr><td>FA-5</td><td>Shadow-IT retirement & system rationalisation</td><td><b>R78m</b></td><td><span class="z" style="background:#2E6DA4">W2</span></td><td>MTEF baseline reprioritisation</td></tr><tr><td>FA-7</td><td>Service & process digitalisation — the citizen channel</td><td><b>R120m</b></td><td><span class="z" style="background:#1D9E75">W3</span></td><td>Strategic Investment Case</td></tr><tr><td><b>TOTAL PROGRAMME</b></td><td>Four financial years</td><td><b>R512m</b></td><td>—</td><td>—</td></tr></tbody></table><h2 class="sh">Spend by financial year</h2><div class="barwrap" style="margin:5px 0"><span class="bt" style="min-width:70px">2026/27</span><div class="bar" style="height:18px"><span style="width:26%;background:#0F6E56"></span></div><span class="bt">R46m</span></div><div class="barwrap" style="margin:5px 0"><span class="bt" style="min-width:70px">2027/28</span><div class="bar" style="height:18px"><span style="width:73%;background:#0F6E56"></span></div><span class="bt">R129m</span></div><div class="barwrap" style="margin:5px 0"><span class="bt" style="min-width:70px">2028/29</span><div class="bar" style="height:18px"><span style="width:100%;background:#0F6E56"></span></div><span class="bt">R176m</span></div><div class="barwrap" style="margin:5px 0"><span class="bt" style="min-width:70px">2029/30</span><div class="bar" style="height:18px"><span style="width:91%;background:#0F6E56"></span></div><span class="bt">R161m</span></div><div class="note"><b>The proportion is the argument.</b> R512m over four years is about R128m a year, against a Vote 33 baseline that transfers <b>R30.9 billion a year</b> in conditional grants presently monitored on a spreadsheet. A Strategic Investment Case is mandatory for FA-3, FA-4 and FA-7, each of which exceeds the ICT procurement threshold. The funding routes are named per PFMA mechanism — MTEF reprioritisation, operational budget or protected line — because "who pays, and how" is part of the answer, not an afterthought. See the <a href="duplication-savings.html" style="color:#0F6E56;font-weight:700;text-decoration:none">Duplication & Savings Report</a> for what the spend returns.</div>
+<div class="note"><b>Source.</b> DHS_PEAR_Assessment_with_EE_v3.xlsx and DHS_PEAR_Phase3_Roadmap_v2.xlsx · Cycle C2 · 2026/27 baseline. Cost, saving and C3–C5 target figures are illustrative planning data created in Phase 3 — sufficient to sequence and test affordability, not a procurement estimate. Worked example, not an official departmental rating.</div>
+
+</main>
+
+<script src="navbar.js"></script>
+</body></html>

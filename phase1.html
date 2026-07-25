@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 1 — Current State Analysis · GWEA 2.0 worked example</title>
+<link rel="stylesheet" href="theme.css">
+<style>
+:root{--acc:#2f9e5b}
+.cat-hdr{cursor:pointer;user-select:none;display:flex;align-items:center;gap:8px;
+  border-radius:6px;padding:4px 6px;margin:-4px -6px;transition:background .12s}
+.cat-hdr:hover{background:rgba(47,158,91,.18)}
+.cat-hdr::after{content:"click to expand";font-size:10.5px;color:#5a6675;margin-left:4px;font-style:italic}
+.cat.open .cat-hdr::after{content:"click to collapse"}
+.cat-hdr h3{margin:0;flex:1}
+.cat-body{display:none;margin-top:6px}
+.cat.open .cat-body{display:block}
+.cat-caret{font-size:16px;color:#2f9e5b;transition:transform .2s ease;flex-shrink:0;line-height:1;width:20px;text-align:center}
+.cat.open .cat-caret{transform:rotate(90deg)}
+.controls{display:flex;gap:10px;margin:0 0 10px}
+.controls button{font-size:12px;padding:4px 12px;border:1px solid var(--line);
+  border-radius:6px;background:#fff;color:#48566a;cursor:pointer}
+.controls button:hover{background:#eef2f6}
+</style>
+</head><body>
+<main>
+<span class="page-tag" style="background:#2f9e5b">Phase 1 · Current State Analysis</span>
+<h1>Phase 1 — Current State Analysis</h1>
+<p class="lede">The output is a categorised catalogue: 15 elements across five layers, populated with the department's real items.</p>
+
+<p><b>Output of this phase — categorised catalogue lists.</b> Cataloguing inventories the department across
+15 architecture elements, grouped into five layers. Nothing is assessed yet; the job is to produce a complete,
+well-categorised register of <em>what exists</em>, drawn from the department's own mandated documents
+(APP, Service Delivery Model, OMF process maps, ICT plan, asset registers).</p>
+
+<h2>The 15 elements, in five layers</h2>
+<div class="grid3"><div class="card" style="border-top:4px solid #7a5aa8">
+      <h3 style="color:#7a5aa8;margin-top:0">Motivation layer</h3><ul class="clean"><li>1. Outcome</li><li>2. Client</li><li>3. Value Proposition</li></ul></div><div class="card" style="border-top:4px solid #c79a3a">
+      <h3 style="color:#c79a3a;margin-top:0">Strategy layer</h3><ul class="clean"><li>4. Capability</li><li>5. Location</li></ul></div><div class="card" style="border-top:4px solid #c98a2e">
+      <h3 style="color:#c98a2e;margin-top:0">Business layer</h3><ul class="clean"><li>6. Product</li><li>7. Service</li><li>8. Process</li></ul></div><div class="card" style="border-top:4px solid #2c6ca3">
+      <h3 style="color:#2c6ca3;margin-top:0">IS Solution layer</h3><ul class="clean"><li>9. Application</li><li>10. Data Access</li><li>11. Master Data</li><li>12. Transaction Data</li></ul></div><div class="card" style="border-top:4px solid #1f6f4a">
+      <h3 style="color:#1f6f4a;margin-top:0">Technology layer</h3><ul class="clean"><li>13. Technology Internal</li><li>14. Technology Integration</li><li>15. Technology External</li></ul></div></div>
+
+<h2>Worked catalogue — all fifteen elements</h2>
+<p>Every element is fully populated below. Click any heading to expand it.
+Items were drawn from the department's APP, ICT plan, SITA asset register, OMF process maps and service delivery documentation.</p>
+
+<div class="controls">
+  <button id="btn-open-all">Expand all</button>
+  <button id="btn-close-all">Collapse all</button>
+</div>
+
+<!-- ── MOTIVATION LAYER ─────────────────────────────────── -->
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>1. Outcome <span class="small">· 7 catalogue items</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body"><ul class="clean">
+    <li>Sustainable human settlements &amp; improved household quality of life</li>
+    <li>Fully subsidised houses delivered</li>
+    <li>Security of tenure — title deeds registered</li>
+    <li>Informal settlements upgraded</li>
+    <li>Serviced sites delivered</li>
+    <li>Affordable rental &amp; social housing delivered</li>
+    <li>Affordable housing finance (First Home Finance)</li>
+  </ul></div>
+</div>
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>2. Client <span class="small">· 10 catalogue items</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body"><ul class="clean">
+    <li>Qualifying low-income households (subsidy applicants)</li>
+    <li>Informal settlement households</li>
+    <li>First-time home buyers (gap market)</li>
+    <li>Social / rental housing tenants</li>
+    <li>Provincial departments (delivery agents)</li>
+    <li>Metropolitan municipalities (delivery agents)</li>
+    <li>Home builders / property practitioners (regulated)</li>
+    <li>Community scheme owners and occupiers</li>
+    <li>Emergency housing beneficiaries (disaster-affected)</li>
+    <li>Digitally excluded applicants (rural, elderly)</li>
+  </ul></div>
+</div>
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>3. Value Proposition <span class="small">· 5 catalogue items</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body"><ul class="clean">
+    <li>A subsidised home for qualifying households</li>
+    <li>Secure, registered title to your home</li>
+    <li>Basic services and tenure in upgraded settlements</li>
+    <li>Access to affordable housing finance</li>
+    <li>Published service standards (Batho Pele charter)</li>
+  </ul></div>
+</div>
+
+<!-- ── STRATEGY LAYER ──────────────────────────────────── -->
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>4. Capability <span class="small">· 10 catalogue items</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body"><ul class="clean">
+    <li>Administration &amp; corporate governance</li>
+    <li>Integrated human settlements planning &amp; development</li>
+    <li>Grant management (HSDG / USDG)</li>
+    <li>Informal settlements upgrading</li>
+    <li>Rental and social housing</li>
+    <li>Affordable housing finance facilitation</li>
+    <li>Public entity oversight</li>
+    <li>Monitoring &amp; evaluation</li>
+    <li>Beneficiary management &amp; subsidy administration</li>
+    <li>ICT and digital services</li>
+  </ul></div>
+</div>
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>5. Location <span class="small">· 10 catalogue items</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body"><ul class="clean">
+    <li>National — DHS head office (Pretoria)</li>
+    <li>Eastern Cape</li>
+    <li>Free State</li>
+    <li>Gauteng</li>
+    <li>KwaZulu-Natal</li>
+    <li>Limpopo</li>
+    <li>Mpumalanga</li>
+    <li>North West</li>
+    <li>Northern Cape</li>
+    <li>Western Cape</li>
+  </ul></div>
+</div>
+
+<!-- ── BUSINESS LAYER ──────────────────────────────────── -->
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>6. Product <span class="small">· 9 catalogue items</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body"><ul class="clean">
+    <li>Housing subsidy / BNG house</li>
+    <li>Title deed</li>
+    <li>Serviced site</li>
+    <li>Rental / social housing unit</li>
+    <li>First Home Finance (FHF) subsidy</li>
+    <li>Emergency / disaster housing unit</li>
+    <li>Community Residential Unit (CRU)</li>
+    <li>Enhanced People's Housing Process (EPHP) support package</li>
+    <li>Informal-settlement upgrade parcel (UISP)</li>
+  </ul></div>
+</div>
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>7. Service <span class="small">· 20 catalogue items</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body"><ul class="clean">
+    <li>Subsidy application &amp; approval</li>
+    <li>Beneficiary registration</li>
+    <li>Title-deed issuance</li>
+    <li>Informal-settlement upgrading</li>
+    <li>Housing consumer complaints</li>
+    <li>Housing allocation &amp; waiting-list management</li>
+    <li>Emergency housing placement</li>
+    <li>First Home Finance (FHF) assessment &amp; origination</li>
+    <li>Community scheme dispute resolution</li>
+    <li>Social / rental housing allocation</li>
+    <li>Provincial grant performance monitoring</li>
+    <li>Project registration &amp; approval</li>
+    <li>Contractor / developer accreditation</li>
+    <li>Municipal accreditation assessment</li>
+    <li>Housing needs assessment (demand capture)</li>
+    <li>Title Deed Restoration Programme service</li>
+    <li>Consumer education &amp; public awareness</li>
+    <li>Parliamentary question response</li>
+    <li>PAIA information request service</li>
+    <li>Tenant dispute / rental tribunal referral</li>
+  </ul></div>
+</div>
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>8. Process <span class="small">· 22 catalogue items</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body"><ul class="clean">
+    <li>Subsidy adjudication process</li>
+    <li>Project approval &amp; disbursement</li>
+    <li>Beneficiary verification</li>
+    <li>Title transfer &amp; registration</li>
+    <li>Housing needs assessment &amp; demand capture</li>
+    <li>Waiting-list management &amp; queue assignment</li>
+    <li>Provincial delivery-agent compliance monitoring</li>
+    <li>Grant payment &amp; reconciliation (HSDG / USDG)</li>
+    <li>Site identification &amp; land release</li>
+    <li>Contractor appointment &amp; contract management</li>
+    <li>Construction quality assurance &amp; inspection</li>
+    <li>Snagging, defects &amp; rectification management</li>
+    <li>Occupation &amp; key handover management</li>
+    <li>Emergency housing activation &amp; placement</li>
+    <li>Social / rental housing allocation &amp; vetting</li>
+    <li>UISP informal-settlement upgrade process</li>
+    <li>FHF / FLISP origination &amp; subsidy payment</li>
+    <li>Dispute resolution &amp; beneficiary appeals</li>
+    <li>Annual Performance Plan (APP) reporting cycle</li>
+    <li>Parliamentary accountability &amp; Ministerial reporting</li>
+    <li>Deeds registration follow-up process</li>
+    <li>PAIA request handling process</li>
+  </ul></div>
+</div>
+
+<!-- ── IS SOLUTION LAYER ───────────────────────────────── -->
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>9. Application <span class="small">· 21 catalogue items · confirmed systems + identified gaps</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body">
+    <ul class="clean">
+      <li>Housing Subsidy System (HSS)</li>
+      <li>National Housing Needs Register</li>
+      <li>Grant management spreadsheets</li>
+      <li>Provincial project registers</li>
+      <li>BAS — Basic Accounting System (transversal finance)</li>
+      <li>PERSAL — personnel &amp; payroll (transversal)</li>
+      <li>LOGIS — procurement, logistics &amp; assets (transversal)</li>
+      <li class="gaplbl">Sector / mandate systems — expected, not yet in the register</li>
+      <li class="gap">Online housing-subsidy application portal (new, citizen-facing)</li>
+      <li class="gap">First Home Finance system (formerly FLISP)</li>
+      <li class="gap">Title-deed &amp; Title Deed Restoration Programme tracking</li>
+      <li class="gap">Social &amp; rental housing / estate-management system</li>
+      <li class="gap">Informal Settlements Upgrading (UISP) project tracking</li>
+      <li class="gap">Emergency / disaster housing management</li>
+      <li class="gap">Beneficiary verification — Home Affairs ID / biometric</li>
+      <li class="gap">GIS / spatial planning (SPLUMA, Priority Housing Development Areas)</li>
+      <li class="gaplbl">Cross-cutting enterprise systems — expected, not yet in the register</li>
+      <li class="gap">EDMS — electronic document &amp; records management</li>
+      <li class="gap">BI / data warehouse / M&amp;E reporting</li>
+      <li class="gap">Call centre / complaints / Presidential Hotline</li>
+      <li class="gap">Website &amp; citizen self-service portal</li>
+    </ul>
+    <p class="small" style="margin-top:6px">Grey entries are applications the department is expected to run but which are <b>not yet in the catalogue</b> — gaps surfaced by reconciling against the ICT Plan (PSR Reg 93) and the CGICTPF application register.</p>
+  </div>
+</div>
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>10. Data Access <span class="small">· 24 catalogue items</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body"><ul class="clean">
+    <li>HSS ↔ Deeds Office (DALRRD)</li>
+    <li>HSS ↔ provincial systems</li>
+    <li>Needs Register ↔ municipalities</li>
+    <li>Beneficiary ↔ Home Affairs (ID verification)</li>
+    <li>HSS ↔ BAS (financial reconciliation)</li>
+    <li>HSS ↔ PERSAL (staff cross-reference)</li>
+    <li>HSS ↔ LOGIS (asset and procurement reference)</li>
+    <li>HSS ↔ SITA hosting environment (SLA monitoring)</li>
+    <li>Provincial HSS ↔ national HSS (aggregation feed)</li>
+    <li>NHFC ↔ DHS (loan and subsidy reconciliation)</li>
+    <li>HDA ↔ DHS (project and land data exchange)</li>
+    <li>Municipal billing ↔ DHS subsidy records</li>
+    <li>SARS ↔ DHS (income verification for FHF / FLISP)</li>
+    <li>DoJCD ↔ DHS (eviction orders &amp; court notifications)</li>
+    <li>National Treasury ↔ DHS (BAS grant reporting)</li>
+    <li>DPWI ↔ DHS (state land parcels)</li>
+    <li>CoGTA ↔ DHS (municipal accreditation status)</li>
+    <li>Stats SA ↔ DHS (housing backlog and census data)</li>
+    <li>DHS website ↔ subsidy application portal</li>
+    <li>Call centre ↔ HSS (complaint and query logging)</li>
+    <li>SHRA ↔ DHS (social housing project data)</li>
+    <li>DHS ↔ PMIS / e-docs (parliamentary submissions)</li>
+    <li>SASSA ↔ DHS (social grant cross-check for eligibility)</li>
+    <li>GIS platform ↔ HSS (spatial location of projects)</li>
+  </ul></div>
+</div>
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>11. Master Data <span class="small">· 13 catalogue items</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body"><ul class="clean">
+    <li>Beneficiary master</li>
+    <li>Project master</li>
+    <li>Property / erf master</li>
+    <li>Provincial delivery-agent master</li>
+    <li>Municipal accreditation register</li>
+    <li>Contractor / developer register</li>
+    <li>Social / rental housing institution register (SHRA-regulated)</li>
+    <li>Land parcel register (spatial, SPLUMA-linked)</li>
+    <li>Subsidy scheme master (BNG, FLISP, UISP, CRU, EPHP)</li>
+    <li>Grant programme master (HSDG, USDG, ISUPG)</li>
+    <li>Public entity register (NHFC, HDA, SHRA, EAAB)</li>
+    <li>Community scheme register (HOAs, sectional titles)</li>
+    <li>Service point / housing office register</li>
+  </ul></div>
+</div>
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>12. Transaction Data <span class="small">· 16 catalogue items</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body"><ul class="clean">
+    <li>Subsidy approvals</li>
+    <li>Grant disbursements</li>
+    <li>Title registrations</li>
+    <li>Complaint records</li>
+    <li>Beneficiary applications (pending &amp; historical)</li>
+    <li>Housing allocation records &amp; waiting-list movements</li>
+    <li>Project milestone &amp; inspection records</li>
+    <li>Payment certificates (contractor progress claims)</li>
+    <li>Grant deductions &amp; recovery records</li>
+    <li>Eviction / legal action records</li>
+    <li>Emergency housing placement records</li>
+    <li>Municipal accreditation assessment records</li>
+    <li>Provincial quarterly performance reports</li>
+    <li>Parliamentary questions &amp; Ministerial responses</li>
+    <li>Audit findings &amp; management action plans</li>
+    <li>PAIA request &amp; response log</li>
+  </ul></div>
+</div>
+
+<!-- ── TECHNOLOGY LAYER ────────────────────────────────── -->
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>13. Technology Internal <span class="small">· 9 catalogue items</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body"><ul class="clean">
+    <li>Departmental data centre / SITA hosting</li>
+    <li>Provincial servers</li>
+    <li>End-user workstations</li>
+    <li>National Government Wide-Area Network (GovNet / SITA WAN)</li>
+    <li>Departmental LAN (head office, Pretoria)</li>
+    <li>VoIP telephone system</li>
+    <li>Video-conferencing infrastructure (MS Teams / GovComms)</li>
+    <li>Backup and disaster-recovery systems</li>
+    <li>Printing, scanning and multi-function device fleet</li>
+  </ul></div>
+</div>
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>14. Technology Integration <span class="small">· 8 catalogue items</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body"><ul class="clean">
+    <li>Batch file exchange (SFTP)</li>
+    <li>Point-to-point database links</li>
+    <li>Manual re-keying between systems</li>
+    <li>Email-based data transfer</li>
+    <li>USB / flash-drive exchange</li>
+    <li>Shared network folder (unstructured file drop)</li>
+    <li>Fax and paper-to-digital capture</li>
+    <li>CD / DVD physical exchange (legacy)</li>
+  </ul></div>
+</div>
+
+<div class="cat">
+  <div class="cat-hdr">
+    <h3>15. Technology External <span class="small">· 8 catalogue items</span></h3>
+    <span class="cat-caret">&#9656;</span>
+  </div>
+  <div class="cat-body"><ul class="clean">
+    <li>Deeds Office (DALRRD)</li>
+    <li>Home Affairs (DHA)</li>
+    <li>Municipalities</li>
+    <li>National Housing Finance Corporation (NHFC)</li>
+    <li>Housing Development Agency (HDA)</li>
+    <li>Social Housing Regulatory Authority (SHRA)</li>
+    <li>SITA (IT infrastructure hosting and connectivity)</li>
+    <li>CoGTA (intergovernmental municipal performance data)</li>
+  </ul></div>
+</div>
+
+<div class="note"><b>Why it matters.</b> The catalogue is the backbone of everything downstream. Every score in
+Phase 2, every focus area in Phase 3, and every remedial project in Phase 4 traces back to a specific catalogue
+item. A weak catalogue produces a weak assessment.</div>
+
+<div class="foot">GWEA 2.0 worked example — Department of Human Settlements (Vote 33) · Cycle C2 · 2026/27 baseline.
+Figures are illustrative training data, not an official departmental assessment.</div>
+</main>
+<script src="navbar.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.cat').forEach(function(c){
+    var hdr = c.querySelector('.cat-hdr');
+    if(hdr) hdr.addEventListener('click', function(){ c.classList.toggle('open'); });
+  });
+  document.getElementById('btn-open-all').addEventListener('click', function(){
+    document.querySelectorAll('.cat').forEach(function(c){ c.classList.add('open'); });
+  });
+  document.getElementById('btn-close-all').addEventListener('click', function(){
+    document.querySelectorAll('.cat').forEach(function(c){ c.classList.remove('open'); });
+  });
+})();
+</script>
+</body></html>

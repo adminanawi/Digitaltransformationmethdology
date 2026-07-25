@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en-ZA"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Rationalisation Roadmap · GWEA 2.0</title>
+<link rel="stylesheet" href="theme.css">
+<style>
+main{max-width:1080px;}
+.ctx{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 2px;}
+.ctx span{font-size:11px;background:#F1F7F5;border:1px solid #D6E7E1;color:#3C5A51;padding:3px 9px;border-radius:3px;}
+.howto{margin-top:11px;background:#FFF8E8;border:1px solid #EBD9AE;border-left:3px solid #E08A1E;border-radius:6px;padding:9px 12px;font-size:12px;color:#5C4A21;line-height:1.5;}
+.howto b{color:#7A5C1E;}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:20px 0 26px;}
+.kpi{background:#fff;border:1px solid #DCE3E0;border-left:4px solid #1D9E75;border-radius:5px;padding:13px 15px;box-shadow:none;}
+.kpi .n{font-size:24px;font-weight:700;color:#085041;line-height:1.05;}
+.kpi .l{font-size:11px;color:#5b6b66;margin-top:5px;line-height:1.35;}
+.kpi.bad{border-left-color:#C0392B;} .kpi.bad .n{color:#C0392B;}
+.kpi.warn{border-left-color:#E08A1E;} .kpi.warn .n{color:#8A5A12;}
+.kpi.good{border-left-color:#1D9E75;}
+h2.sh{font-size:15px;color:#085041;margin:26px 0 4px;border:none;padding:0;}
+p.sub{font-size:12.5px;color:#5b6b66;margin:0 0 14px;line-height:1.55;max-width:900px;}
+p.body{font-size:13px;color:#3d4a46;line-height:1.65;max-width:900px;margin:0 0 12px;}
+p.body b{color:#0F6E56;}
+.note{margin-top:18px;background:#F1F7F5;border:1px solid #D6E7E1;border-left:3px solid #0F6E56;border-radius:8px;padding:12px 14px;font-size:12.5px;color:#2f463f;line-height:1.6;max-width:940px;}
+.note b{color:#0F6E56;}
+.note.warn{background:#FFF8E8;border-color:#EBD9AE;border-left-color:#E08A1E;color:#5C4A21;}
+.note.warn b{color:#7A5C1E;}
+.note.bad{background:#FCEEEC;border-color:#E7C4BE;border-left-color:#C0392B;color:#6E2B22;}
+.note.bad b{color:#9E2E22;}
+table.tbl{width:100%;border-collapse:collapse;font-size:12px;margin:6px 0 8px;background:#fff;border:1px solid #DCE3E0;}
+table.tbl th{background:#F1F7F5;text-align:left;padding:8px 10px;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;color:#3C5A51;border-bottom:1px solid #DCE3E0;}
+table.tbl td{padding:7px 10px;border-bottom:1px solid #EBEFED;vertical-align:top;line-height:1.45;}
+table.tbl tr:last-child td{border-bottom:none;}
+table.tbl tr:hover td{background:#FAFCFB;}
+table.tbl td.num{text-align:right;}
+.z{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;color:#fff;white-space:nowrap;}
+.z.int{background:#C0392B;} .z.imp{background:#E08A1E;} .z.sus{background:#1D9E75;} .z.con{background:#2E6DA4;}
+.bar{background:#EBEFED;border-radius:5px;height:15px;position:relative;overflow:hidden;min-width:80px;}
+.bar>span{display:block;height:100%;border-radius:5px;}
+.barwrap{display:flex;align-items:center;gap:8px;}
+.barwrap .bt{font-size:11px;color:#41504b;min-width:34px;}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:820px){.cols{grid-template-columns:1fr;}}
+.card{background:#fff;border:1px solid #DCE3E0;border-radius:6px;padding:15px 17px;box-shadow:none;}
+.card h3{margin:0 0 7px;font-size:13.5px;color:#085041;}
+.card p{font-size:12px;line-height:1.6;color:#3d4a46;margin:0 0 8px;}
+.waves{display:flex;flex-direction:column;gap:10px;}
+.wv{display:grid;grid-template-columns:70px 1fr;gap:14px;border:1px solid #DCE3E0;border-radius:6px;background:#fff;padding:12px 14px;}
+.wv .wtag{font-weight:700;color:#fff;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.wv h4{margin:0 0 4px;font-size:13px;color:#085041;}
+.wv .ww{font-size:10.5px;color:#5b6b66;text-transform:uppercase;letter-spacing:.04em;}
+.wv p{font-size:12px;line-height:1.55;color:#3d4a46;margin:6px 0 0;}
+.chain{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:11.5px;}
+.chain .node{background:#fff;border:1px solid #DCE3E0;border-radius:5px;padding:5px 9px;}
+.chain .arr{color:#93a09b;font-weight:700;}
+.stk{border-left:3px solid #1D9E75;padding:2px 0 2px 12px;margin:0 0 4px;}
+.stk b{color:#0F6E56;}
+.legend{display:flex;gap:16px;align-items:center;font-size:11.5px;color:#41504b;margin:2px 0 10px;flex-wrap:wrap;}
+.legend .lk{display:inline-flex;align-items:center;gap:6px;}
+.legend .sw{width:14px;height:10px;border-radius:2px;display:inline-block;}
+.legend .sw.line{height:3px;} .legend .sw.tgt{background:none;border-top:2px dashed #93a09b;height:0;width:16px;}
+.mini{font-size:10.5px;color:#8a968f;margin-top:3px;}
+</style>
+</head>
+<body>
+<main>
+<span class="page-tag" style="background:#0F6E56">Serving the Stakeholder · SITA / GITO</span><h1>System Rationalisation Roadmap</h1>
+<p class="lede">The application estate — what is retired, replaced, consolidated or retained, in what sequence and why. Answers SITA, the GITO/GITOC and Treasury's duplication question.</p><div class="ctx"><span>21 catalogued applications</span><span>7 retire · 2 replace · 2 consolidate · 10 retain</span><span>Nothing retired before its replacement exists</span></div>
+
+<div class="kpis"><div class="kpi bad"><div class="n">7</div><div class="l">applications to retire</div></div><div class="kpi warn"><div class="n">2</div><div class="l">to replace · 2 to consolidate</div></div><div class="kpi good"><div class="n">10</div><div class="l">to retain & integrate</div></div><div class="kpi bad"><div class="n">73</div><div class="l">total shadow-IT instances addressed as a class</div></div></div><p class="body">SITA and the GITO ask which systems must be provisioned, hosted and integrated, and where spend is duplicated. The System Rationalisation Roadmap dispositions the application estate — what is retired, replaced, consolidated or retained — <b>in what sequence, and why</b>. Its governing rule is absolute: nothing is retired before its replacement exists.</p><h2 class="sh">The 21 catalogued applications, dispositioned</h2><table class="tbl"><thead><tr><th>Application</th><th>Score</th><th>Disposition</th><th>Class</th><th>Wave</th></tr></thead><tbody><tr><td>HSS — Housing Subsidy System</td><td><div class="barwrap"><div class="bar"><span style="width:40%;background:#C0392B"></span></div><span class="bt">2</span></div></td><td>Modernise & integrate</td><td><span class="z" style="background:#1D9E75">Retain</span></td><td><span class="z" style="background:#E08A1E">W1–W2</span></td></tr><tr><td>NHNR — National Housing Needs Register</td><td><div class="barwrap"><div class="bar"><span style="width:60%;background:#E08A1E"></span></div><span class="bt">3</span></div></td><td>Retain & integrate</td><td><span class="z" style="background:#1D9E75">Retain</span></td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>BAS — Basic Accounting System</td><td><div class="barwrap"><div class="bar"><span style="width:60%;background:#E08A1E"></span></div><span class="bt">3</span></div></td><td>Retain & integrate</td><td><span class="z" style="background:#1D9E75">Retain</span></td><td><span class="z" style="background:#E08A1E">W1</span></td></tr><tr><td>PERSAL</td><td><div class="barwrap"><div class="bar"><span style="width:40%;background:#C0392B"></span></div><span class="bt">2</span></div></td><td>Retain — assign owner</td><td><span class="z" style="background:#1D9E75">Retain</span></td><td><span class="z" style="background:#C0392B">W0</span></td></tr><tr><td>LOGIS</td><td><div class="barwrap"><div class="bar"><span style="width:40%;background:#C0392B"></span></div><span class="bt">2</span></div></td><td>Retain — assign owner</td><td><span class="z" style="background:#1D9E75">Retain</span></td><td><span class="z" style="background:#C0392B">W0</span></td></tr><tr><td>DHS public website</td><td><div class="barwrap"><div class="bar"><span style="width:40%;background:#C0392B"></span></div><span class="bt">2</span></div></td><td>Replace</td><td><span class="z" style="background:#E08A1E">Replace</span></td><td><span class="z" style="background:#1D9E75">W3</span></td></tr><tr><td>CSOS case management system</td><td><div class="barwrap"><div class="bar"><span style="width:40%;background:#C0392B"></span></div><span class="bt">2</span></div></td><td>Retain & integrate</td><td><span class="z" style="background:#1D9E75">Retain</span></td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>NHBRC enrolment & inspection</td><td><div class="barwrap"><div class="bar"><span style="width:40%;background:#C0392B"></span></div><span class="bt">2</span></div></td><td>Retain & integrate</td><td><span class="z" style="background:#1D9E75">Retain</span></td><td><span class="z" style="background:#E08A1E">W1</span></td></tr><tr><td>NHFC subsidy system</td><td><div class="barwrap"><div class="bar"><span style="width:60%;background:#E08A1E"></span></div><span class="bt">3</span></div></td><td>Retain & integrate</td><td><span class="z" style="background:#1D9E75">Retain</span></td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>SHRA project system</td><td><div class="barwrap"><div class="bar"><span style="width:40%;background:#C0392B"></span></div><span class="bt">2</span></div></td><td>Retain & integrate</td><td><span class="z" style="background:#1D9E75">Retain</span></td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>Deeds_Tracker_v14_FINAL.xlsx</td><td><div class="barwrap"><div class="bar"><span style="width:2%;background:#C0392B"></span></div><span class="bt">0</span></div></td><td>RETIRE — material risk</td><td><span class="z" style="background:#C0392B">Retire</span></td><td><span class="z" style="background:#E08A1E">W1</span></td></tr><tr><td>Project_Milestones (SharePoint)</td><td><div class="barwrap"><div class="bar"><span style="width:20%;background:#C0392B"></span></div><span class="bt">1</span></div></td><td>Consolidate</td><td><span class="z" style="background:#2E6DA4">Consolidate</span></td><td><span class="z" style="background:#C0392B">W0</span></td></tr><tr><td>Grant_Compliance_2025.xlsx</td><td><div class="barwrap"><div class="bar"><span style="width:2%;background:#C0392B"></span></div><span class="bt">0</span></div></td><td>RETIRE — highest risk</td><td><span class="z" style="background:#C0392B">Retire</span></td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>Complaints.mdb</td><td><div class="barwrap"><div class="bar"><span style="width:2%;background:#C0392B"></span></div><span class="bt">0</span></div></td><td>RETIRE</td><td><span class="z" style="background:#C0392B">Retire</span></td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>M&E_Consolidation.xlsx</td><td><div class="barwrap"><div class="bar"><span style="width:2%;background:#C0392B"></span></div><span class="bt">0</span></div></td><td>RETIRE</td><td><span class="z" style="background:#C0392B">Retire</span></td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>Contractor_Panel.mdb</td><td><div class="barwrap"><div class="bar"><span style="width:2%;background:#C0392B"></span></div><span class="bt">0</span></div></td><td>RETIRE</td><td><span class="z" style="background:#C0392B">Retire</span></td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>Dedup_Working.xlsx</td><td><div class="barwrap"><div class="bar"><span style="width:2%;background:#C0392B"></span></div><span class="bt">0</span></div></td><td>RETIRE — material risk</td><td><span class="z" style="background:#C0392B">Retire</span></td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>Provincial delivery spreadsheets (×9)</td><td><div class="barwrap"><div class="bar"><span style="width:2%;background:#C0392B"></span></div><span class="bt">0</span></div></td><td>CONSOLIDATE — nine into one</td><td><span class="z" style="background:#2E6DA4">Consolidate</span></td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>Emergency_Housing_Intake (paper+xls)</td><td><div class="barwrap"><div class="bar"><span style="width:20%;background:#C0392B"></span></div><span class="bt">1</span></div></td><td>Replace</td><td><span class="z" style="background:#E08A1E">Replace</span></td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>Title_Backlog_Reconciliation.xlsx</td><td><div class="barwrap"><div class="bar"><span style="width:2%;background:#C0392B"></span></div><span class="bt">0</span></div></td><td>RETIRE</td><td><span class="z" style="background:#C0392B">Retire</span></td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr><tr><td>EDRMS (partial)</td><td><div class="barwrap"><div class="bar"><span style="width:20%;background:#C0392B"></span></div><span class="bt">1</span></div></td><td>Complete & govern</td><td><span class="z" style="background:#1D9E75">Retain</span></td><td><span class="z" style="background:#2E6DA4">W2</span></td></tr></tbody></table><div class="note bad"><b>Highest single risk, deliberately retired last.</b> Grant_Compliance_2025.xlsx monitors R30.9bn in conditional-grant transfers on one spreadsheet — the highest-risk item in the register. It cannot be retired until a governed replacement exists, which is why FA-5 sits in W2 and not W0 despite carrying that risk. Deeds_Tracker_v14_FINAL.xlsx (fourteen circulating versions of the national title backlog) waits for the Deeds Registry API in W1. The rule holds: <a href="ea-roadmap.html" style="color:#0F6E56;font-weight:700;text-decoration:none">nothing is retired before its replacement is in production</a>.</div>
+<div class="note"><b>Source.</b> DHS_PEAR_Assessment_with_EE_v3.xlsx and DHS_PEAR_Phase3_Roadmap_v2.xlsx · Cycle C2 · 2026/27 baseline. Cost, saving and C3–C5 target figures are illustrative planning data created in Phase 3 — sufficient to sequence and test affordability, not a procurement estimate. Worked example, not an official departmental rating.</div>
+
+</main>
+
+<script src="navbar.js"></script>
+</body></html>
